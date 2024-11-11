@@ -8,18 +8,44 @@ import {
     RouterProvider,
     
 } from "react-router-dom";
+import Admin from '../../Pages/Admin/Admin';
+import Events from '../../Pages/Events/Events';
+import User from '../../Pages/User/User';
+import Connexion from '../../Pages/Connexion/Connexion';
+import Contact from '../../Pages/Contact/Contact';
 export default function App()
 {
     const router = createBrowserRouter([
         {
           path: "/",
           element: <Root/>,
-          errorElement: <Root error={<ErrorPage/>}/>,
+          errorElement: <Root insertedElement={<ErrorPage/>}/>,
           children: [
             {
-                path: "/test",
-                element: <p>TEST SALE PUTE</p>
-            }
+                path: "/",
+                element: <p>Page d'accueil</p>
+            },
+            {
+                path: "/admin",
+                element: <Admin/>
+            },
+            {
+                path: "/events",
+                element: <Events/>
+            },
+            {
+                path: "/compte",
+                element: <User/>
+            },
+            {
+                path: "/connexion",
+                element: <Connexion/>
+            },
+            {
+                path: "/contact",
+                element: <Contact/>
+            },
+
           ]
         }
     ]);

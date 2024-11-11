@@ -1,16 +1,19 @@
 import './Root.css'
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import Footer from '../Footer/Footer';
+import Navbar from '../Navbar/Navbar';
 
-export default function Root() {
-  return (
-    <>
-      <header>
-        <nav><Link to={"/"}>accueil</Link>          <Link to={"/test"}>test</Link></nav>
-      </header>
-      <main id="detail">
-        <Outlet />
-      </main>
-      <footer>DU TEXTE EN FOOTER SALOPE</footer>
-    </>
-  );
+export default function Root(props) {
+
+
+    return (
+        <>
+            <Navbar/>
+            <main id="detail">
+                {/* Si le props error est non renseigné on affiche la sous page ordinaire, sinon on affiche l'erreur */}
+                {props.error == undefined? <Outlet/> : props.error}
+            </main>
+            <Footer/>
+        </>
+    );
 }

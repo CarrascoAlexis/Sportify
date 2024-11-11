@@ -14,7 +14,7 @@ export default function App()
         {
           path: "/",
           element: <Root/>,
-          errorElement: <ErrorPage/>,
+          errorElement: <Root error={<ErrorPage/>}/>,
           children: [
             {
                 path: "/test",

@@ -1,5 +1,5 @@
 import './App.css'
-import React from 'react';
+import React, { useEffect } from 'react';
 import Root from '../Root/Root';
 import ErrorPage from '../../Pages/Error/Error';
 

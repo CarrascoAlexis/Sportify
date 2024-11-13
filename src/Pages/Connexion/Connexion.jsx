@@ -7,19 +7,23 @@ import './Connexion.css'
 export default function Connexion(props)
 {
     const navigate = useNavigate();
-    const [pseudo, setPseudo] = useState("");
-    const [pass, setPass] = useState("");
+    const [input, setInput] = useState({
+        nickname: "",
+        password: "",
+    });
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if(pseudo == "admin" && pass == "admin")
+        if(input.nickname == "admin" && input.password == "admin")
         {
             // Future redirection vers le panel admin (un peu particulier celui là, se crée un token a chaque nouvelle session)
             return
         }
 
-        axios.get(`http://localhost:5000/user/connect`, {"params": {"nickname" : pseudo, "password": pass}})
+        
+
+        axios.get(`http://localhost:5000/user/connect`, {"params": {"nickname" : input.nickname, "password": input.password}})
         .then(res => {
             if(res.data.error == undefined && res.data.token != undefined)
             {
@@ -37,15 +41,24 @@ export default function Connexion(props)
         });
     }
 
+    
+    const handleInput = (e) => {
+        const { name, value } = e.target;
+        setInput((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
+
     return(
         <form onSubmit={handleSubmit} id='connection-form'>
             <label>
                 Pseudo:
-                <input type="text" name="pseudo" value={pseudo} onChange={(e) => setPseudo(e.target.value)} />
+                <input type="text" name="nickname" value={input.nickname} onChange={handleInput} />
             </label>
             <label>
                 Pass:
-                <input type="text" name="pass" value={pass} onChange={(e) => setPass(e.target.value)}/>
+                <input type="text" name="password" value={input.password} onChange={handleInput}/>
             </label>
             <input type="submit" value="Submit"/>
         </form>

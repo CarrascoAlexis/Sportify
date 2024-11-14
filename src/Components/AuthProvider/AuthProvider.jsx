@@ -43,6 +43,7 @@ export default function AuthProvider({children}){
     };
 
     const firstLog = () => {
+        if(localStorage.getItem("ephemeral") == "true") logOut()
         if(localStorage.getItem("token") == undefined || localStorage.getItem("token") == null || localStorage.getItem("ephemeral") == true)
         {
             setUser(null);
@@ -64,8 +65,23 @@ export default function AuthProvider({children}){
         })
     }
 
+    const updateConnection = () => {
+        if(user != null)
+        {
+            return true
+        }
+        if(localStorage.getItem("token") != null && localStorage.getItem("token") != "")
+        {
+            if(localStorage.getItem("ephemeral") == "true") logOut()
+            firstLog()
+            return true
+            // ON crée une nouvelle session ici
+        }
+        return false;
+    }
+
     return(
-        <AuthContext.Provider value={{ token, user, loginAction, logOut, firstLog,  ephemeralSession }}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={{ token, user, loginAction, logOut, firstLog, updateConnection,  ephemeralSession }}>{children}</AuthContext.Provider>
     )
 }
 

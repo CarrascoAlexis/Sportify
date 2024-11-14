@@ -11,7 +11,6 @@ export default function ProtectedPage({children}){
     {
         auth.firstLog()
         return <p>Loading session</p>
-        // ON crée une nouvelle session ici
     }
     return <Navigate to={"/connexion"}/>
 }

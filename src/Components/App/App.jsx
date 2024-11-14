@@ -16,6 +16,7 @@ import Contact from '../../Pages/Contact/Contact';
 import AuthProvider from '../AuthProvider/AuthProvider';
 import ProtectedPage from '../ProtectedPage/ProtectedPage';
 import EventDetails from '../../Pages/EventDetails/EventDetails';
+import EventsCreate from '../../Pages/EventsCreate/EventsCreate';
 
 export default function App()
 {
@@ -45,6 +46,10 @@ export default function App()
             {
                 path: "/events/:title",
                 element: <EventDetails/>
+            },
+            {
+                path: "/events/create",
+                element: <EventsCreate/>
             },
             {
                 path: "/compte",

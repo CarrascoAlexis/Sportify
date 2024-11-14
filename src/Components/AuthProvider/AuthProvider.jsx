@@ -1,6 +1,7 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import axios from 'axios';
+import axiosInstance from "../../axiosConfig";
 
 const AuthContext = createContext();
 
@@ -13,7 +14,7 @@ export default function AuthProvider({children}){
     const loginAction = async (data) => {
 
 
-        axios.get(`http://localhost:5000/user/connect`, {"params": {"nickname" : data.nickname, "password": data.password, "ephemeral": data.ephemeral}})
+        axiosInstance.get(`/user/connect`, {"params": {"nickname" : data.nickname, "password": data.password, "ephemeral": data.ephemeral}})
         .then(res => {
             if(res.data.error == undefined && res.data.token != undefined)
             {
@@ -35,7 +36,7 @@ export default function AuthProvider({children}){
     };
 
     const logOut = () => {
-        axios.post("http://localhost:5000/user/destroySession", {"token": localStorage.getItem("token")})
+        axiosInstance.post("/user/destroySession", {"token": localStorage.getItem("token")})
         .then(res => {
             console.log(res)
             setUser(null);
@@ -58,7 +59,7 @@ export default function AuthProvider({children}){
             localStorage.removeItem("token");
             return
         }
-        axios.get(`http://localhost:5000/user/getSession`, {"params": {"token": localStorage.getItem("token")}})
+        axiosInstance.get(`/user/getSession`, {"params": {"token": localStorage.getItem("token")}})
         .then(res => {
             console.log(res)
             if(res.data.nickname == undefined)

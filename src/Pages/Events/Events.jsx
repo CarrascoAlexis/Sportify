@@ -7,10 +7,13 @@ export default function Events(props)
 {
     const [events, setEvents] = useState([{}])
 
-    axiosInstance.get("/events")
-    .then(res => {
-        setEvents(res.data)
-    })
+    useState(() => {
+        axiosInstance.get("/events")
+        .then(res => {
+            setEvents(res.data)
+        })
+    }, [])
+
     return (
         <div>
           {

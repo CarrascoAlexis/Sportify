@@ -15,6 +15,7 @@ import Connexion from '../../Pages/Connexion/Connexion';
 import Contact from '../../Pages/Contact/Contact';
 import AuthProvider from '../AuthProvider/AuthProvider';
 import ProtectedPage from '../ProtectedPage/ProtectedPage';
+import EventDetails from '../../Pages/EventDetails/EventDetails';
 
 export default function App()
 {
@@ -40,6 +41,10 @@ export default function App()
             {
                 path: "/events",
                 element: <Events/>
+            },
+            {
+                path: "/events/:title",
+                element: <EventDetails/>
             },
             {
                 path: "/compte",

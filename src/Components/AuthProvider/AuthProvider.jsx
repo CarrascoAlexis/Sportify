@@ -35,11 +35,18 @@ export default function AuthProvider({children}){
     };
 
     const logOut = () => {
-        setUser(null);
-        setToken("");
-        localStorage.removeItem("token");
-        navigate("/connexion");
-        return <Navigate to="/connexion" />;
+        axios.post("http://localhost:5000/user/destroySession", {"token": localStorage.getItem("token")})
+        .then(res => {
+            console.log(res)
+            setUser(null);
+            setToken("");
+            localStorage.removeItem("token");
+            navigate("/connexion");
+            return <Navigate to="/connexion" />;
+        })
+        .catch(error => {
+            console.log(error);
+        });
     };
 
     const firstLog = () => {

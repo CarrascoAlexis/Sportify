@@ -13,12 +13,19 @@ import Events from '../../Pages/Events/Events';
 import User from '../../Pages/User/User';
 import Connexion from '../../Pages/Connexion/Connexion';
 import Contact from '../../Pages/Contact/Contact';
+import AuthProvider from '../AuthProvider/AuthProvider';
+
 export default function App()
 {
+    const elem = 
+        <AuthProvider>
+            <Root/>
+        </AuthProvider>
+
     const router = createBrowserRouter([
         {
           path: "/",
-          element: <Root/>,
+          element: elem,
           errorElement: <Root error={<ErrorPage/>}/>,
           children: [
             {

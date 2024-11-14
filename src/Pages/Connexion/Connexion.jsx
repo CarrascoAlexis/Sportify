@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
+import { useAuth } from '../../Components/AuthProvider/AuthProvider';
 
 import './Connexion.css'
 
@@ -10,8 +10,9 @@ export default function Connexion(props)
     const [input, setInput] = useState({
         nickname: "",
         password: "",
+        ephemeral: true
     });
-
+    const auth = useAuth();
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -23,22 +24,27 @@ export default function Connexion(props)
 
         
 
-        axios.get(`http://localhost:5000/user/connect`, {"params": {"nickname" : input.nickname, "password": input.password}})
-        .then(res => {
-            if(res.data.error == undefined && res.data.token != undefined)
-            {
-                console.log("connection réussie !")
-                console.log(res.data.token)
-                document.cookie = `token=${res.data.token}`
-                navigate("/compte");
-                return
-            }
-            console.log("connection échouée")
-            document.getElementById('connection-form').classList.add("error")
-        })
-        .catch(error => {
-            console.log(error);
-        });
+        // axios.get(`http://localhost:5000/user/connect`, {"params": {"nickname" : input.nickname, "password": input.password}})
+        // .then(res => {
+        //     if(res.data.error == undefined && res.data.token != undefined)
+        //     {
+        //         console.log("connection réussie !")
+        //         document.cookie = `token=${res.data.token}`
+        //         navigate("/compte");
+        //         return
+        //     }
+        //     console.log("connection échouée")
+        //     document.getElementById('connection-form').classList.add("error")
+        // })
+        // .catch(error => {
+        //     console.log(error);
+        // });
+        if (input.username !== "" && input.password !== "") {
+            auth.loginAction(input);
+            return;
+        }
+
+
     }
 
     
@@ -50,6 +56,13 @@ export default function Connexion(props)
         }));
     };
 
+    const handleInputTest = (e) => {
+        setInput((prev) => ({
+            ...prev,
+            ["ephemeral"]: !input.ephemeral,
+        }));
+    }
+
     return(
         <form onSubmit={handleSubmit} id='connection-form'>
             <label>
@@ -59,6 +72,10 @@ export default function Connexion(props)
             <label>
                 Pass:
                 <input type="text" name="password" value={input.password} onChange={handleInput}/>
+            </label>
+            <label >
+                Rester connecté
+                <input type="checkbox" onChange={handleInputTest} checked={!input.ephemeral}/>
             </label>
             <input type="submit" value="Submit"/>
         </form>

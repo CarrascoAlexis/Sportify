@@ -14,6 +14,7 @@ import User from '../../Pages/User/User';
 import Connexion from '../../Pages/Connexion/Connexion';
 import Contact from '../../Pages/Contact/Contact';
 import AuthProvider from '../AuthProvider/AuthProvider';
+import ProtectedPage from '../ProtectedPage/ProtectedPage';
 
 export default function App()
 {
@@ -42,7 +43,7 @@ export default function App()
             },
             {
                 path: "/compte",
-                element: <User/>
+                element: <ProtectedPage><User/></ProtectedPage>
             },
             {
                 path: "/connexion",

@@ -52,6 +52,14 @@ export default function AuthProvider({children}){
         }
         axios.get(`http://localhost:5000/user/getSession`, {"params": {"token": localStorage.getItem("token")}})
         .then(res => {
+            console.log(res)
+            if(res.data.nickname == undefined)
+            {
+                navigate("/connexion")
+                return
+            }
+            setToken(localStorage.getItem("token"))
+            setUser(res.data)
             console.log(res.data)
         })
     }

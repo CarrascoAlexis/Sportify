@@ -23,33 +23,43 @@ export default function EventsCreate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        let error = false
+
+        Object.keys(input).forEach((key) => {
+            if(input[key] == "")
+            {
+                if(document.getElementById(key) != undefined) document.getElementById(key).classList.add("error")
+            }
+            else
+            {
+                if(document.getElementById(key) != undefined) document.getElementById(key).classList.remove("error")
+            }
+        })
+
+        if(error) return;
         const data = input
         data["authorId"] = auth.user.id
         axiosInstance.post("/events/create", {"params": input})
         .then(res => {
-            console.log(res)
+            
         })
     }
 
     return(
         <form onSubmit={handleSubmit} id='connection-form'>
-            <label>
+            <label id="title">
                 Titre:
                 <input type="text" name="title" value={input.title} onChange={handleInput} />
             </label>
-            <label>
+            <label id="description">
                 Description détaillée:
                 <textarea name="description" value={input.description} onChange={handleInput}/>
             </label>
-            <label>
+            <label id="startDate">
                 Description détaillée:
                 <input type="date" name="startDate" value={input.startDate} onChange={handleInput}/>
             </label>
-            <label>
-                Description détaillée:
-                <input type="date" name="endDate" value={input.endDate} onChange={handleInput}/>
-            </label>
-            <label>
+            <label id="endDate">
                 Description détaillée:
                 <input type="date" name="endDate" value={input.endDate} onChange={handleInput}/>
             </label>

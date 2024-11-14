@@ -61,7 +61,6 @@ export default function AuthProvider({children}){
         }
         axiosInstance.get(`/user/getSession`, {"params": {"token": localStorage.getItem("token")}})
         .then(res => {
-            console.log(res)
             if(res.data.nickname == undefined)
             {
                 navigate("/connexion")
@@ -69,7 +68,6 @@ export default function AuthProvider({children}){
             }
             setToken(localStorage.getItem("token"))
             setUser(res.data)
-            console.log(res.data)
         })
     }
 

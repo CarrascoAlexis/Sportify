@@ -2,9 +2,12 @@ import { useEffect, useState } from 'react'
 import './Events.css'
 import axiosInstance from '../../axiosConfig'
 import EventCard from '../../Components/EventCard/EventCard'
+import { useAuth } from '../../Components/AuthProvider/AuthProvider'
+import { Link } from 'react-router-dom'
 
 export default function Events(props)
 {
+    const auth = useAuth()
     const [events, setEvents] = useState([{}])
 
     useState(() => {
@@ -14,14 +17,22 @@ export default function Events(props)
         })
     }, [])
 
+    var createButton = null
+
+    if(auth.user != null)
+    {
+        createButton = <Link to={"/events/create"}>Créer un event</Link>
+    }
+
     return (
         <div>
-          {
-            events
-              .map(event =>
-                <EventCard key={event.id} event={event}/>
-              )
-          }
+            {
+                events
+                .map(event =>
+                    <EventCard key={event.id} event={event}/>
+                )
+            }
+            {createButton}
         </div>
     )
 }

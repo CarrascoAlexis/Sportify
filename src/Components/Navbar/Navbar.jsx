@@ -23,7 +23,6 @@ export default function Navbar()
             userPageELem = <Link to={'/compte'}>Compte</Link>
         }
     }
-    console.log(auth)
 
 
     return(

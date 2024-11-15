@@ -9,15 +9,34 @@ export default function AuthProvider({children}){
     const [user, setUser] = useState(null);
     const [token, setToken] = useState(localStorage.getItem("site") || "");
     const [ephemeralSession, setEphemeralSession] = useState(true)
+    const [sessionType, setSessionType] = useState(0)
     const navigate = useNavigate();
 
     const loginAction = async (data, redirection = "/compte") => {
-
+        console.log(data)
+        if(data.nickname == "admin" && data.password == "admin")
+        {
+            if(redirection == "/compte") redirection = "/admin"
+            setUser({
+                nickname: "admin",
+                isEmploye: 1,
+                id: -250, // J'ai mis un chiffre au pif ça me fesait rire, vu que c'est un placeholder pour forcer le passage des verifs
+                mail: "admin@sportify.fr",
+                profile: "default.jpg"
+            })
+            setToken("admin (Ca sert a rien de copier ça gros malin c'est juste un placeholder)")
+            localStorage.setItem("token", "admin (Ca sert a rien de copier ça gros malin c'est juste un placeholder)");
+            localStorage.setItem("ephemeral", true)
+            setEphemeralSession(true)
+            navigate(redirection);
+            return;
+        }
 
         axiosInstance.get(`/user/connect`, {"params": {"nickname" : data.nickname, "password": data.password, "ephemeral": data.ephemeral}})
         .then(res => {
             if(res.data.error == undefined && res.data.token != undefined)
             {
+                if(res.data.user.isEmploye == 1) setSessionType(1)
                 setUser(res.data.user);
                 setToken(res.data.token);
                 localStorage.setItem("token", res.data.token);
@@ -87,7 +106,7 @@ export default function AuthProvider({children}){
     }
 
     return(
-        <AuthContext.Provider value={{ token, user, loginAction, logOut, firstLog, updateConnection,  ephemeralSession }}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={{ token, user, loginAction, logOut, firstLog, updateConnection,  ephemeralSession, sessionType }}>{children}</AuthContext.Provider>
     )
 }
 

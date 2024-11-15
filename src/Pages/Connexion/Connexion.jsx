@@ -14,15 +14,7 @@ export default function Connexion(props)
     });
     const auth = useAuth();
     const handleSubmit = (event) => {
-        event.preventDefault();
-
-        if(input.nickname == "admin" && input.password == "admin")
-        {
-            // Future redirection vers le panel admin (un peu particulier celui là, se crée un token a chaque nouvelle session)
-            return
-        }
-
-        
+        event.preventDefault();       
 
         // axios.get(`http://localhost:5000/user/connect`, {"params": {"nickname" : input.nickname, "password": input.password}})
         // .then(res => {
@@ -44,8 +36,6 @@ export default function Connexion(props)
             else auth.loginAction(input);
             return;
         }
-
-
     }
 
     

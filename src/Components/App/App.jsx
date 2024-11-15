@@ -49,7 +49,7 @@ export default function App()
             },
             {
                 path: "/events/create",
-                element: <EventsCreate/>
+                element: <ProtectedPage><EventsCreate/></ProtectedPage>
             },
             {
                 path: "/compte",

@@ -12,12 +12,14 @@ import {
 import Admin from '../../Pages/Admin/Admin';
 import Events from '../../Pages/Events/Events';
 import User from '../../Pages/User/User';
-import Connexion from '../../Pages/Connexion/Connexion';
+import Connexion from '../../Pages/User/Connexion';
 import Contact from '../../Pages/Contact/Contact';
 import AuthProvider from '../AuthProvider/AuthProvider';
 import ProtectedPage from '../ProtectedPage/ProtectedPage';
-import EventDetails from '../../Pages/EventDetails/EventDetails';
-import EventsCreate from '../../Pages/EventsCreate/EventsCreate';
+import EventDetails from '../../Pages/Events/EventDetails/EventDetails';
+import EventsCreate from '../../Pages/Events/EventsCreate';
+import UsersPanel from '../../Pages/Admin/UsersPanel';
+import EventsPanel from '../../Pages/Admin/EventsPanel';
 
 export default function App()
 {
@@ -70,11 +72,11 @@ export default function App()
                     },
                     {
                         path:"/admin/users",
-                        element:<Admin><p>Utilisateurs</p></Admin>
+                        element:<Admin><UsersPanel/></Admin>
                     },
                     {
                         path:"/admin/events",
-                        element:<Admin><p>Events</p></Admin>
+                        element:<Admin><EventsPanel/></Admin>
                     }
                 ]
             }

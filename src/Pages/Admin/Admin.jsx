@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../Components/AuthProvider/AuthProvider'
-import Connexion from '../Connexion/Connexion'
+import Connexion from '../User/Connexion'
 import './Admin.css'
 
 export default function Admin({children}, props)

@@ -5,6 +5,7 @@ import ErrorPage from '../../Pages/Error/Error';
 
 import {
     createBrowserRouter,
+    Outlet,
     RouterProvider,
     
 } from "react-router-dom";
@@ -36,10 +37,6 @@ export default function App()
                 element: <p>Page d'accueil</p>
             },
             {
-                path: "/admin",
-                element: <Admin/>
-            },
-            {
                 path: "/events",
                 element: <Events/>
             },
@@ -62,6 +59,20 @@ export default function App()
             {
                 path: "/contact",
                 element: <Contact/>
+            },
+            {
+                path: "/admin",
+                element: <Outlet/>,
+                children:[
+                    {
+                        index: true,
+                        element: <Admin/>
+                    },
+                    {
+                        path:"/admin/test",
+                        element:<Admin><p>test</p></Admin>
+                    }
+                ]
             }
 
           ]

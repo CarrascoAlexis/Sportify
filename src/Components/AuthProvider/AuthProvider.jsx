@@ -11,7 +11,7 @@ export default function AuthProvider({children}){
     const [ephemeralSession, setEphemeralSession] = useState(true)
     const navigate = useNavigate();
 
-    const loginAction = async (data) => {
+    const loginAction = async (data, redirection = "/compte") => {
 
 
         axiosInstance.get(`/user/connect`, {"params": {"nickname" : data.nickname, "password": data.password, "ephemeral": data.ephemeral}})
@@ -24,7 +24,7 @@ export default function AuthProvider({children}){
                 localStorage.setItem("ephemeral", data.ephemeral)
                 if(data.ephemeral == false) setEphemeralSession(false)
                 else setEphemeralSession(true)
-                navigate("/compte");
+                navigate(redirection);
                 return
             }
             console.log("connection échouée")

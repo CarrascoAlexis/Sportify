@@ -40,7 +40,8 @@ export default function Connexion(props)
         //     console.log(error);
         // });
         if (input.username !== "" && input.password !== "") {
-            auth.loginAction(input);
+            if(props.redirection != undefined) auth.loginAction(input, props.redirection);
+            else auth.loginAction(input);
             return;
         }
 

@@ -1,5 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../AuthProvider/AuthProvider";
+import Connexion from "../../Pages/Connexion/Connexion";
 
 export default function ProtectedPage({children}){
     const auth = useAuth()
@@ -12,5 +13,5 @@ export default function ProtectedPage({children}){
         auth.firstLog()
         return <p>Loading session</p>
     }
-    return <Navigate to={"/connexion"}/>
+    return <Connexion redirection={window.location.pathname}/>
 }

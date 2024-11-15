@@ -14,8 +14,9 @@ export default function Admin({children}, props)
     if(children == undefined)
     return(
         <div>
-            Admin
-            <Link to="/admin/test">test</Link>
+            Page principale du panel admin
+            <Link to={"users"}>Gestion user</Link>
+            <Link to={"events"}>Gestion user</Link>
         </div>
     )
     return(<>{children}</>)

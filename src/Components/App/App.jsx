@@ -69,8 +69,12 @@ export default function App()
                         element: <Admin/>
                     },
                     {
-                        path:"/admin/test",
-                        element:<Admin><p>test</p></Admin>
+                        path:"/admin/users",
+                        element:<Admin><p>Utilisateurs</p></Admin>
+                    },
+                    {
+                        path:"/admin/events",
+                        element:<Admin><p>Events</p></Admin>
                     }
                 ]
             }

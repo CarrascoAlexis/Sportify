@@ -47,7 +47,7 @@ export default function Connexion(props)
         }));
     };
 
-    const handleInputTest = (e) => {
+    const handleInputCheck = (e) => {
         setInput((prev) => ({
             ...prev,
             ["ephemeral"]: !input.ephemeral,
@@ -66,7 +66,7 @@ export default function Connexion(props)
             </label>
             <label >
                 Rester connecté
-                <input type="checkbox" onChange={handleInputTest} checked={!input.ephemeral}/>
+                <input type="checkbox" onChange={handleInputCheck} checked={!input.ephemeral}/>
             </label>
             <input type="submit" value="Submit"/>
         </form>

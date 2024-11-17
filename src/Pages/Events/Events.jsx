@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './Events.css'
 import axiosInstance from '../../axiosConfig'
-import EventCard from '../../Components/EventCard/EventCard'
+import EventCard from '../../Components/Cards/EventCard'
 import { useAuth } from '../../Components/AuthProvider/AuthProvider'
 import { Link } from 'react-router-dom'
 

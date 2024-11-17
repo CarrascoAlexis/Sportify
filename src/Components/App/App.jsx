@@ -1,5 +1,6 @@
 import './App.css'
 import React, { useEffect } from 'react';
+import "./simple-grid.min.css"
 import Root from '../Root/Root';
 import ErrorPage from '../../Pages/Error/Error';
 
@@ -20,6 +21,7 @@ import EventDetails from '../../Pages/Events/EventDetails/EventDetails';
 import EventsCreate from '../../Pages/Events/EventsCreate';
 import UsersPanel from '../../Pages/Admin/UsersPanel';
 import EventsPanel from '../../Pages/Admin/EventsPanel';
+import UserCreation from '../../Pages/Admin/UserCreation';
 
 export default function App()
 {
@@ -73,6 +75,10 @@ export default function App()
                     {
                         path:"/admin/users",
                         element:<Admin><UsersPanel/></Admin>
+                    },
+                    {
+                        path:"/admin/users/create",
+                        element:<Admin><UserCreation/></Admin>
                     },
                     {
                         path:"/admin/events",

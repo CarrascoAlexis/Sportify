@@ -1,4 +1,11 @@
+import { Link } from "react-router-dom"
+
 export default function EventsPanel()
 {
-    return (<p>Events panel</p>)
+    return (
+        <div>
+            
+        <Link to={"../"}>Retour</Link>
+        </div>
+    )
 }

@@ -46,7 +46,6 @@ export default function AuthProvider({children}){
                 navigate(redirection);
                 return
             }
-            console.log("connection échouée")
             document.getElementById('connection-form').classList.add("error")
         })
         .catch(error => {
@@ -57,7 +56,6 @@ export default function AuthProvider({children}){
     const logOut = () => {
         axiosInstance.post("/user/destroySession", {"token": localStorage.getItem("token")})
         .then(res => {
-            console.log(res)
             setUser(null);
             setToken("");
             localStorage.removeItem("token");

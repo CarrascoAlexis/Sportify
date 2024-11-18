@@ -5,7 +5,6 @@ import './Admin.css'
 
 export default function Admin({children}, props)
 {
-    console.log(window.location.pathname)
     const auth = useAuth()
     if(auth.user == null)
     {

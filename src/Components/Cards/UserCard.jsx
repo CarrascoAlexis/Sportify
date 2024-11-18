@@ -1,5 +1,6 @@
 import { useState } from "react"
 import './Cards.css'
+import axiosInstance from "../../axiosConfig"
 
 export default function UserCard(props)
 {
@@ -20,6 +21,13 @@ export default function UserCard(props)
         }));
     };
 
+    const handleInputCheck = (e) => {
+        setUser((prev) => ({
+            ...prev,
+            isEmploye: !user.isEmploye,
+        }));
+    }
+
     const handleEditButtonClick = (e) => {
         e.preventDefault()
         if(edition)
@@ -28,12 +36,16 @@ export default function UserCard(props)
             document.getElementById(`mail-${user.id}`).disabled = true
             document.getElementById(`is-employe-${user.id}`).disabled = true
             document.getElementById(`validate-${user.id}`).innerHTML = "Editer"
-
-            // ICI ON ENVOIE A LA BDD SALE FOU
-            console.log("validation")
-
-            setEdition(false)
-            return
+            axiosInstance.post("/user/edit", user)
+            .then(res => {
+                if(res.data.error){
+                    console.log(res.data.error)
+                }
+                else
+                {
+                    setEdition(false)
+                }
+            })
         }
         else
         {
@@ -42,17 +54,17 @@ export default function UserCard(props)
             document.getElementById(`is-employe-${user.id}`).disabled = false
             document.getElementById(`validate-${user.id}`).innerHTML = "Valider"
             setEdition(true)
-            return
         }
+        return
     }
 
     return(
-        <div id={`user-card-${user.id}`} className="user-card" classname="user-card">
+        <div id={`user-card-${user.id}`} className="user-card">
             <img src={profile} alt=""/>
-            <input id={`nicnkame-${user.id}`} onChange={handleInput} type="text" value={user.nickname} disabled/>
-            <input id={`mail-${user.id}`} onChange={handleInput} type="text" value={user.mail} disabled/>
-            <input id={`is-employe-${user.id}`} onChange={handleInput} type="checkbox" checked={user.isEmploye} disabled></input>
-            <button id={`validate-${user.id}`} onChange={handleInput} onClick={handleEditButtonClick}>Editer</button>
+            <input id={`nicnkame-${user.id}`} onChange={handleInput} name="nickname" type="text" value={user.nickname} disabled/>
+            <input id={`mail-${user.id}`} onChange={handleInput} name="mail" type="text" value={user.mail} disabled/>
+            <input id={`is-employe-${user.id}`} onChange={handleInputCheck} name="isEmploye" type="checkbox" checked={user.isEmploye} disabled></input>
+            <button id={`validate-${user.id}`} onClick={handleEditButtonClick}>Editer</button>
         </div>
     )
 }

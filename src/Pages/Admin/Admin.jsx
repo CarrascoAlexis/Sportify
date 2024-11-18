@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { useAuth } from '../../Components/AuthProvider/AuthProvider'
 import Connexion from '../User/Connexion'
 import './Admin.css'
+import { useState } from 'react'
+import axiosInstance from '../../axiosConfig'
 
 export default function Admin({children}, props)
 {
@@ -10,6 +12,7 @@ export default function Admin({children}, props)
     {
         return <Connexion redirection={window.location.pathname}/>
     }
+
     if(children == undefined)
     return(
         <div>

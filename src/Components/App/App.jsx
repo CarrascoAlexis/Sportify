@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import "./simple-grid.min.css"
 import Root from '../Root/Root';
 import ErrorPage from '../../Pages/Error/Error';
+import { useAuth } from '../AuthProvider/AuthProvider';
 
 import {
     createBrowserRouter,

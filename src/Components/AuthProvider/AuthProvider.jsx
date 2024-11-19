@@ -25,6 +25,7 @@ export default function AuthProvider({children}){
                 mail: "admin@sportify.fr",
                 profile: "default.jpg"
             })
+            setSessionType(3)
             setToken("admin (Ca sert a rien de copier ça gros malin c'est juste un placeholder)")
             localStorage.setItem("token", "admin (Ca sert a rien de copier ça gros malin c'est juste un placeholder)");
             localStorage.setItem("ephemeral", true)

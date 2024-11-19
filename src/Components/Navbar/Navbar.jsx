@@ -1,36 +1,31 @@
 import { Link } from 'react-router-dom'
 import './Navbar.css'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useAuth } from '../AuthProvider/AuthProvider'
 
 export default function Navbar()
 {
-
-    let userPageELem
+    const [userPageElem, setUserPageELem] = useState(<Link to={'/compte/connexion'}>Connexion</Link>)
     const auth = useAuth()
-    if(auth == undefined)
-    {
-        userPageELem = <Link to={'/compte/connexion'}>Connexion</Link>
-    }
-    else
-    {
-        auth.updateConnection()
-        console.log("boucle")
-        if(auth.user == null)
+    useEffect(() => {
+        if(auth != undefined) auth.updateConnection()
+        if(auth == undefined || auth.user == null)
         {
-            userPageELem = <Link to={'/compte/connexion'}>Connexion</Link>
+            setUserPageELem(<Link to={'/compte/connexion'}>Connexion</Link>)
         }
-        else {
-            userPageELem = <Link to={'/compte'}>Compte</Link>
+        else
+        {
+            setUserPageELem(<Link to={'/compte'}>Compte</Link>)
         }
-    }
+    }, [])
+    
 
     return(
         <header>
             <nav>
                 <Link to={'/'}>Accueil</Link>
                 <Link to={'/events'}>Events</Link>
-                {userPageELem}
+                {userPageElem}
                 <Link to={'/contact'}>Contact</Link>
             </nav>
         </header>

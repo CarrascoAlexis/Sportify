@@ -8,7 +8,7 @@ import axiosInstance from '../../axiosConfig'
 export default function Admin({children}, props)
 {
     const auth = useAuth()
-    if(auth.user == null)
+    if(auth.user == null || auth.sessionType != 3)
     {
         return <Connexion redirection={window.location.pathname}/>
     }

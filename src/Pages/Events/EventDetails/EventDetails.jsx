@@ -23,19 +23,14 @@ export default function EventDetails()
             });
     }, [])
 
-    if(event.isVisible) return(
+    let editButton = null
+    if(auth != undefined && auth.user && event.authorId == auth.user.id) editButton = <p>Editer</p>
+    if(editButton != null) return(
         <div>
             <h2>{event.title}</h2>
             <p>{event.shortDescription}</p>
             <p>{event.description}</p>
-        </div>
-    )
-    if(auth != undefined && auth.user && event.authorId == auth.user.id) return(
-        <div>
-            <h2>{event.title}</h2>
-            <p>{event.shortDescription}</p>
-            <p>{event.description}</p>
-            <p>Edit mode</p>
+            {editButton}
         </div>
     )
     return(

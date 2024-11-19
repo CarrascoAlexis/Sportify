@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from '../../Components/AuthProvider/AuthProvider';
 
 import './Connexion.css'
@@ -55,6 +55,7 @@ export default function Connexion(props)
     }
 
     return(
+        <>
         <form onSubmit={handleSubmit} id='connection-form'>
             <label>
                 Pseudo:
@@ -70,5 +71,7 @@ export default function Connexion(props)
             </label>
             <input type="submit" value="Submit"/>
         </form>
+        <Link to={"/compte/creation"}>Creer un compte</Link>
+        </>
     )
 }

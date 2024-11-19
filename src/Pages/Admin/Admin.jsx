@@ -12,7 +12,6 @@ export default function Admin({children}, props)
     {
         return <Connexion redirection={window.location.pathname}/>
     }
-
     if(children == undefined)
     return(
         <div>

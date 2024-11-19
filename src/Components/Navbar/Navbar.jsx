@@ -8,21 +8,38 @@ export default function Navbar()
 
     let userPageELem
     const auth = useAuth()
-    if(auth == undefined)
-    {
-        userPageELem = <Link to={'/connexion'}>Connexion</Link>
-    }
-    else
-    {
-        auth.updateConnection()
-        if(auth.user == null)
+    useEffect(() => {
+        if(auth == undefined)
         {
-            userPageELem = <Link to={'/connexion'}>Connexion</Link>
+            userPageELem = <Link to={'/compte/connexion'}>Connexion</Link>
         }
-        else {
-            userPageELem = <Link to={'/compte'}>Compte</Link>
+        else
+        {
+            auth.updateConnection()
+            console.log("caca")
+            if(auth.user == null)
+            {
+                userPageELem = <Link to={'/compte/connexion'}>Connexion</Link>
+            }
+            else {
+                userPageELem = <Link to={'/compte'}>Compte</Link>
+            }
         }
-    }
+    }, [])
+    if(auth == undefined)
+        {
+            userPageELem = <Link to={'/compte/connexion'}>Connexion</Link>
+        }
+        else
+        {
+            if(auth.user == null)
+            {
+                userPageELem = <Link to={'/compte/connexion'}>Connexion</Link>
+            }
+            else {
+                userPageELem = <Link to={'/compte'}>Compte</Link>
+            }
+        }
 
 
     return(

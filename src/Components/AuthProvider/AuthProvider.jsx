@@ -14,6 +14,7 @@ export default function AuthProvider({children}){
 
     const loginAction = async (data, redirection = "/compte") => {
         console.log(data)
+        console.log(data)
         if(data.nickname == "admin" && data.password == "admin")
         {
             if(redirection == "/compte") redirection = "/admin"
@@ -59,8 +60,8 @@ export default function AuthProvider({children}){
             setUser(null);
             setToken("");
             localStorage.removeItem("token");
-            navigate("/connexion");
-            return <Navigate to="/connexion" />;
+            navigate("/compte/connexion");
+            return <Navigate to="/compte/connexion" />;
         })
         .catch(error => {
             console.log(error);
@@ -69,6 +70,7 @@ export default function AuthProvider({children}){
 
     const firstLog = () => {
         if(localStorage.getItem("ephemeral") == "true") logOut()
+            console.log("boucle")
         if(localStorage.getItem("token") == undefined || localStorage.getItem("token") == null || localStorage.getItem("ephemeral") == true)
         {
             setUser(null);
@@ -80,7 +82,7 @@ export default function AuthProvider({children}){
         .then(res => {
             if(res.data.nickname == undefined)
             {
-                navigate("/connexion")
+                navigate("/compte/connexion")
                 return
             }
             setToken(localStorage.getItem("token"))

@@ -22,6 +22,7 @@ import EventsCreate from '../../Pages/Events/EventsCreate';
 import UsersPanel from '../../Pages/Admin/UsersPanel';
 import EventsPanel from '../../Pages/Admin/EventsPanel';
 import UserCreation from '../../Pages/Admin/UserCreation';
+import CreateAccount from '../../Pages/User/CreateAccount';
 
 export default function App()
 {
@@ -57,8 +58,12 @@ export default function App()
                 element: <ProtectedPage><User/></ProtectedPage>
             },
             {
-                path: "/connexion",
+                path: "/compte/connexion",
                 element: <Connexion/>
+            },
+            {
+                path: "/compte/creation",
+                element: <CreateAccount/>
             },
             {
                 path: "/contact",

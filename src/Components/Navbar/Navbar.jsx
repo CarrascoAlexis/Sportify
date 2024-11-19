@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import './Navbar.css'
 import { useEffect, useState } from 'react'
-import { useAuth } from '../AuthProvider/AuthProvider'
+import { useAuth } from '../App/AuthProvider'
 
 export default function Navbar()
 {

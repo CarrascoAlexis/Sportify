@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axiosInstance from '../../../axiosConfig';
 import './EventDetails.css'
 import { useParams } from 'react-router-dom';
-import { useAuth } from '../../../Components/AuthProvider/AuthProvider';
+import { useAuth } from '../../../Components/App/AuthProvider';
 
 export default function EventDetails()
 {

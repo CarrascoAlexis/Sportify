@@ -1,5 +1,5 @@
 import { useState } from "react"
-import './Cards.css'
+import '../../Stylesheets/Cards.css'
 import axiosInstance from "../../axiosConfig"
 
 export default function UserCard(props)

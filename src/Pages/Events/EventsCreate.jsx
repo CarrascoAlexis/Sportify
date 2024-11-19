@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import './EventsCreate.css'
 import axiosInstance from '../../axiosConfig';
-import { useAuth } from '../../Components/AuthProvider/AuthProvider';
+import { useAuth } from '../../Components/App/AuthProvider';
+
 
 export default function EventsCreate()
 {

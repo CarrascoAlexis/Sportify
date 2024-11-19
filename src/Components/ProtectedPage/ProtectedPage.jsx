@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../AuthProvider/AuthProvider";
+import { useAuth } from "../App/AuthProvider";
 import Connexion from "../../Pages/User/Connexion";
 
 export default function ProtectedPage({children}){

@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
 import { useEffect, useState } from 'react';
-import { useAuth } from '../AuthProvider/AuthProvider';
+import { useAuth } from '../App/AuthProvider';
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 

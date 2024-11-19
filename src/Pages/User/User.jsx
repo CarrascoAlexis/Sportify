@@ -1,5 +1,5 @@
 import './User.css'
-import { useAuth } from '../../Components/AuthProvider/AuthProvider'
+import { useAuth } from '../../Components/App/AuthProvider'
 import { Link } from "react-router-dom";
 
 export default function User(props)

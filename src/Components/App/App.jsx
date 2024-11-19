@@ -1,9 +1,7 @@
-import './App.css'
 import React, { useEffect } from 'react';
-import "./simple-grid.min.css"
 import Root from '../Root/Root';
 import ErrorPage from '../../Pages/Error/Error';
-import { useAuth } from '../AuthProvider/AuthProvider';
+import '../../Stylesheets/Main.css'
 
 import {
     createBrowserRouter,
@@ -16,7 +14,7 @@ import Events from '../../Pages/Events/Events';
 import User from '../../Pages/User/User';
 import Connexion from '../../Pages/User/Connexion';
 import Contact from '../../Pages/Contact/Contact';
-import AuthProvider from '../AuthProvider/AuthProvider';
+import AuthProvider from './AuthProvider';
 import ProtectedPage from '../ProtectedPage/ProtectedPage';
 import EventDetails from '../../Pages/Events/EventDetails/EventDetails';
 import EventsCreate from '../../Pages/Events/EventsCreate';

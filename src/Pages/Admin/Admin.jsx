@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useAuth } from '../../Components/AuthProvider/AuthProvider'
+import { useAuth } from '../../Components/App/AuthProvider'
 import Connexion from '../User/Connexion'
 import './Admin.css'
 import { useState } from 'react'

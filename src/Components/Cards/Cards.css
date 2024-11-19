@@ -1,3 +1,7 @@
 .user-card{
     display: flex;
 }
+
+.no-visible{
+    display: none;
+}

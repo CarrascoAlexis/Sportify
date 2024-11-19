@@ -36,6 +36,7 @@ export default function UserCard(props)
             document.getElementById(`mail-${user.id}`).disabled = true
             document.getElementById(`is-employe-${user.id}`).disabled = true
             document.getElementById(`validate-${user.id}`).innerHTML = "Editer"
+            document.getElementById(`delete-${user.id}`).classList.add("no-visible")
             axiosInstance.post("/user/edit", user)
             .then(res => {
                 if(res.data.error){
@@ -53,8 +54,18 @@ export default function UserCard(props)
             document.getElementById(`mail-${user.id}`).disabled = false
             document.getElementById(`is-employe-${user.id}`).disabled = false
             document.getElementById(`validate-${user.id}`).innerHTML = "Valider"
+            document.getElementById(`delete-${user.id}`).classList.remove("no-visible")
             setEdition(true)
         }
+        return
+    }
+
+    const handleDelete = (e) => {
+        e.preventDefault();
+        axiosInstance.delete("/user/delete", {"params": {userId: user.id}})
+        .then(res => {
+            console.log(res)
+        })
         return
     }
 
@@ -65,6 +76,7 @@ export default function UserCard(props)
             <input id={`mail-${user.id}`} onChange={handleInput} name="mail" type="text" value={user.mail} disabled/>
             <input id={`is-employe-${user.id}`} onChange={handleInputCheck} name="isEmploye" type="checkbox" checked={user.isEmploye} disabled></input>
             <button id={`validate-${user.id}`} onClick={handleEditButtonClick}>Editer</button>
+            <button id={`delete-${user.id}`} onClick={handleDelete} name="delete" className="no-visible">Supprimer</button>
         </div>
     )
 }

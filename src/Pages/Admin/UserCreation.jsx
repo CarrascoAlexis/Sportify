@@ -10,7 +10,7 @@ export default function UserCreation()
         password: "",
         profile: "",
         mail: "",
-        isEmploye: false
+        isEmploye: 0
     });
 
     const navigate = useNavigate()
@@ -19,23 +19,19 @@ export default function UserCreation()
         e.preventDefault()
 
         const formData = new FormData();
-
-        // Update the formData object
-        formData.append(
-            "profilePic",
-            file,
-            file.name
-        );
-
-        // Details of the uploaded file
-        console.log(file);
-
-        // Request made to the backend api
-        // Send formData object
-        axiosInstance.post("/image/profileupload", formData);
         axiosInstance.post("/user/create", input)
         .then(res => {
             if(res.data.error) return
+            if(file != null || file != undefined)
+            { 
+                formData.append(
+                    "profilePic",
+                    file,
+                    file.name
+                );
+            }
+            formData.append("userId", res.data.insertId)
+            axiosInstance.post("/image/profileupload/", formData);
             navigate("/admin/users")
         })
     }
@@ -53,6 +49,9 @@ export default function UserCreation()
     };
 
     const handleInputCheck = (e) => {
+        let employe
+        if(input.isEmploye == 1) employe = 0
+        else employe = 1 
         setInput((prev) => ({
             ...prev,
             isEmploye: !input.isEmploye,

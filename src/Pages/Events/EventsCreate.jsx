@@ -57,11 +57,11 @@ export default function EventsCreate()
             </label>
             <label id="startDate">
                 Description détaillée:
-                <input type="date" name="startDate" value={input.startDate} onChange={handleInput}/>
+                <input type="datetime-local" name="startDate" value={input.startDate} onChange={handleInput}/>
             </label>
             <label id="endDate">
                 Description détaillée:
-                <input type="date" name="endDate" value={input.endDate} onChange={handleInput}/>
+                <input type="datetime-local" name="endDate" value={input.endDate} onChange={handleInput}/>
             </label>
             <input type="submit" value="Submit"/>
         </form>

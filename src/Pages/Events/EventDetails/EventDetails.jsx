@@ -25,7 +25,8 @@ export default function EventDetails()
 
     let editButton = null
     if(auth != undefined && auth.user && event.authorId == auth.user.id) editButton = <p>Editer</p>
-    if(editButton != null || event.isVivible) return(
+    console.log(event.isVisible)
+    if(editButton != null || event.isVisible) return(
         <div>
             <h2>{event.title}</h2>
             <p>{event.shortDescription}</p>

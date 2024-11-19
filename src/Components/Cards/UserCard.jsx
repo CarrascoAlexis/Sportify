@@ -70,13 +70,13 @@ export default function UserCard(props)
     }
 
     return(
-        <div id={`user-card-${user.id}`} className="user-card">
-            <img src={profile} alt=""/>
-            <input id={`nicnkame-${user.id}`} onChange={handleInput} name="nickname" type="text" value={user.nickname} disabled/>
-            <input id={`mail-${user.id}`} onChange={handleInput} name="mail" type="text" value={user.mail} disabled/>
-            <input id={`is-employe-${user.id}`} onChange={handleInputCheck} name="isEmploye" type="checkbox" checked={user.isEmploye} disabled></input>
-            <button id={`validate-${user.id}`} onClick={handleEditButtonClick}>Editer</button>
-            <button id={`delete-${user.id}`} onClick={handleDelete} name="delete" className="no-visible">Supprimer</button>
-        </div>
+        <tr id={`user-card-${user.id}`} className="user-card">
+            <td><img src={profile} alt=""/></td>
+            <td><input id={`nicnkame-${user.id}`} onChange={handleInput} name="nickname" type="text" value={user.nickname} disabled/></td>
+            <td><input id={`mail-${user.id}`} onChange={handleInput} name="mail" type="text" value={user.mail} disabled/></td>
+            <td><input id={`is-employe-${user.id}`} onChange={handleInputCheck} name="isEmploye" type="checkbox" checked={user.isEmploye} disabled></input></td>
+            <td><button id={`validate-${user.id}`} onClick={handleEditButtonClick}>Editer</button></td>
+            <td><button id={`delete-${user.id}`} onClick={handleDelete} name="delete" className="no-visible">Supprimer</button></td>
+        </tr>
     )
 }

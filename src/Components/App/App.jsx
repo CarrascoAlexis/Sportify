@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Root from '../Root/Root';
 import ErrorPage from '../../Pages/Error/Error';
 import '../../Stylesheets/Main.css'
+import '../../Stylesheets/simple-grid.min.css'
 
 import {
     createBrowserRouter,

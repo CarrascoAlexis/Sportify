@@ -71,7 +71,7 @@ export default function AuthProvider({children}){
 
     const firstLog = () => {
         if(localStorage.getItem("ephemeral") == "true") logOut()
-            console.log("boucle")
+        console.log("boucle")
         if(localStorage.getItem("token") == undefined || localStorage.getItem("token") == null || localStorage.getItem("ephemeral") == true)
         {
             setUser(null);
@@ -99,7 +99,7 @@ export default function AuthProvider({children}){
         if(localStorage.getItem("token") != null && localStorage.getItem("token") != "")
         {
             if(localStorage.getItem("ephemeral") == "true") logOut()
-            firstLog()
+            else firstLog()
             return true
             // ON crée une nouvelle session ici
         }

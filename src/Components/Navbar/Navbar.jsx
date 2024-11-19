@@ -5,20 +5,22 @@ import { useAuth } from '../AuthProvider/AuthProvider'
 
 export default function Navbar()
 {
-    const [userPageElem, setUserPageELem] = useState(<Link to={'/compte/connexion'}>Connexion</Link>)
     const auth = useAuth()
-    useEffect(() => {
-        if(auth != undefined) auth.updateConnection()
-        if(auth == undefined || auth.user == null)
-        {
-            setUserPageELem(<Link to={'/compte/connexion'}>Connexion</Link>)
-        }
-        else
-        {
-            setUserPageELem(<Link to={'/compte'}>Compte</Link>)
-        }
-    }, [])
     
+    let userPageElem = <Link to={'/compte/connexion'}>Connexion</Link>
+
+    if(auth != undefined) auth.updateConnection()
+    if(auth.user == null)
+    {
+        auth.updateConnection()
+        console.log(auth)
+        console.log("bah oui bb")
+        userPageElem = <Link to={'/compte/connexion'}>Connexion</Link>
+    }
+    else
+    {
+        userPageElem = <Link to={'/compte'}>Compte</Link>
+    }
 
     return(
         <header>

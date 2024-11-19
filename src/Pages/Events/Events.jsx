@@ -11,7 +11,7 @@ export default function Events(props)
     const [events, setEvents] = useState([{}])
 
     useState(() => {
-        axiosInstance.get("/events")
+        axiosInstance.get("/events", {"params": {"filter": {"isVisible": 1}}})
         .then(res => {
             setEvents(res.data)
         })

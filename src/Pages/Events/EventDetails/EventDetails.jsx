@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { Slide } from 'react-slideshow-image';
 import { useAuth } from '../../../Components/App/AuthProvider';
 import 'react-slideshow-image/dist/styles.css';
+import { BsMouse } from "react-icons/bs";
 
 export default function EventDetails()
 {
@@ -62,22 +63,27 @@ export default function EventDetails()
 
     return(
         <div className='event-show'>
-            <div className='imageContainer'>
-                <Slide {...properties}>
-                    {
-                        images.map(img => 
-                        <div className="each-slide-effect">
-                            <div style={{ 'backgroundImage': `url(http://localhost:5000/eventsPic/${img.fileName})`}}>
+            <div className='slideshow-block'>
+                <div className='imageContainer'>
+                    <Slide {...properties}>
+                        {
+                            images.map(img => 
+                            <div className="each-slide-effect">
+                                <div style={{ 'backgroundImage': `url(http://localhost:5000/eventsPic/${img.fileName})`}}>
+                                </div>
                             </div>
-                        </div>
-                        )
-                    }
-                </Slide>
+                            )
+                        }
+                    </Slide>
+                </div>
+                <div className='event-title-block'>
+                    <h2>{event.title}</h2>
+                    <div className='event-scroll-mouse'>
+                        <BsMouse />
+                    </div>
+                </div>
             </div>
-            <div className='event-title-block'>
-                <h2>{event.title}</h2>
-                <span>Petit bouton de scroll</span>
-            </div>
+            
             <p>{event.shortDescription}</p>
             <p>{event.description}</p>
             {editButton}

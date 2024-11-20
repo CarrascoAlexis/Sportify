@@ -1,4 +1,6 @@
-:root{
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap');
+
+body{
     --main-color: #242628;
 }
 
@@ -17,4 +19,11 @@ main{
 
 .white-text > * {
     color:#aaaaaa;
+}
+
+h1, h2, h3{
+    font-family: "Jura", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
 }

@@ -26,7 +26,7 @@ export default function EventDetails()
     }, [])
 
     let editButton = null
-    if(auth != undefined && auth.user && event.authorId == auth.user.id) editButton = <p>Editer</p>
+    if(event != null && auth != undefined && auth.user && event.authorId == auth.user.id) editButton = <p>Editer</p>
     if(event == null || event == undefined ||editButton == null)
     {
         return(

@@ -3,6 +3,7 @@ nav{
     color: #aaaaaa;
     display: flex;
     padding: 10px;
+    height: 8vh;
 }
 
 nav a {

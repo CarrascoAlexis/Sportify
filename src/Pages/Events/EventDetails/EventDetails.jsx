@@ -2,7 +2,9 @@ import { useState } from 'react';
 import axiosInstance from '../../../axiosConfig';
 import './EventDetails.css'
 import { useParams } from 'react-router-dom';
+import { Slide } from 'react-slideshow-image';
 import { useAuth } from '../../../Components/App/AuthProvider';
+import 'react-slideshow-image/dist/styles.css';
 
 export default function EventDetails()
 {
@@ -14,6 +16,17 @@ export default function EventDetails()
     let { title } = useParams();
 
     if(!auth.user) auth.updateConnection()
+
+
+    const initSlider = () => {
+        const slides = document.getElementsByClassName('slider')
+        for(let i = 0; i < slides.length; i++)
+        {
+            console.log(slides[i])
+            slides[i].classList.remove('active')
+        }
+    }
+
 
     useState(() => {    
         axiosInstance.get("/events", {"params": {"filter": {"title": title}}})
@@ -42,21 +55,31 @@ export default function EventDetails()
         )
     }
 
+    const properties = {
+        prevArrow: <></>,
+        nextArrow: <></>
+    }
+
     return(
-        <div>
-            <h2>{event.title}</h2>
+        <div className='event-show'>
+            <div className='imageContainer'>
+                <Slide {...properties}>
+                    {
+                        images.map(img => 
+                        <div className="each-slide-effect">
+                            <div style={{ 'backgroundImage': `url(http://localhost:5000/eventsPic/${img.fileName})`}}>
+                            </div>
+                        </div>
+                        )
+                    }
+                </Slide>
+            </div>
+            <div className='event-title-block'>
+                <h2>{event.title}</h2>
+                <span>Petit bouton de scroll</span>
+            </div>
             <p>{event.shortDescription}</p>
             <p>{event.description}</p>
-            <div>
-            <p>fesse</p>
-            {
-                images
-                .map(img => 
-                    <img src={`http://localhost:5000/eventsPic/${img.fileName}`} alt="" />
-                )
-            }
-            
-            </div>
             {editButton}
         </div>
     )

@@ -1,0 +1,21 @@
+:root{
+    --main-color: #242628;
+}
+
+main{
+    min-height: 75vh;
+}
+
+.table-full-w
+{
+    width: 100%;
+}
+
+.white-text{
+    color:#aaaaaa;
+}
+
+.white-text > * {
+    color:#aaaaaa;
+}
+

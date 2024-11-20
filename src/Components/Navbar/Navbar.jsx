@@ -27,6 +27,7 @@ export default function Navbar()
             <nav>
                 <Link to={'/'}>Accueil</Link>
                 <Link to={'/events'}>Events</Link>
+                <h1>Sportify</h1>
                 {userPageElem}
                 <Link to={'/contact'}>Contact</Link>
             </nav>

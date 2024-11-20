@@ -7,7 +7,9 @@ import { useAuth } from '../../../Components/App/AuthProvider';
 export default function EventDetails()
 {
     const auth = useAuth()
-    const [event, setEvent] = useState({})
+    const [event, setEvent] = useState({
+        authorId: -1
+    })
     let { title } = useParams();
 
     if(!auth.user) auth.updateConnection()
@@ -25,16 +27,18 @@ export default function EventDetails()
 
     let editButton = null
     if(auth != undefined && auth.user && event.authorId == auth.user.id) editButton = <p>Editer</p>
-    console.log(event.isVisible)
-    if(editButton != null || event.isVisible) return(
+    if(event == null || event == undefined ||editButton == null)
+    {
+        return(
+            <p>Event innaccessible</p>
+        )
+    }
+    return(
         <div>
             <h2>{event.title}</h2>
             <p>{event.shortDescription}</p>
             <p>{event.description}</p>
             {editButton}
         </div>
-    )
-    return(
-        <p>Event innaccessible</p>
     )
 }

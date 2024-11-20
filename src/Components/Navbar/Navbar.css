@@ -1,0 +1,60 @@
+nav{
+    background-color: #242628;
+    color: #aaaaaa;
+    display: flex;
+    padding: 10px;
+}
+
+nav a {
+    color: #aaaaaa;
+    text-decoration: none;
+    padding: 5px;
+    margin: auto auto;
+    font-size: x-large;
+    box-shadow: inset 0 0 0 0 #54b3d6;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    box-shadow: inset 300px 0 0 0 #aaaaaa;
+    color: #242628;
+}
+
+nav h1 {
+    color: #aaaaaa;
+    margin: 0 auto;
+    padding: 0 1%;
+}
+
+nav h1:hover {
+    animation-name: logoAnimation;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    border-radius: 10px;font-size: 40px;
+    cursor: crosshair;
+}
+
+@keyframes logoAnimation {
+    0% {
+        background: linear-gradient(-45deg, #1B43F6, #93368F, #93368F, #FE2824);
+        background-size: 400% 400%;
+		background-position: 0% 50%;
+        -webkit-text-fill-color: transparent; 
+        -webkit-background-clip: text; 
+	}
+	50% {
+        background: linear-gradient(-45deg, #1B43F6, #93368F, #93368F, #FE2824);
+        background-size: 400% 400%;
+		background-position: 100% 50%;
+        -webkit-text-fill-color: transparent; 
+        -webkit-background-clip: text; 
+	}
+	100% {
+        background: linear-gradient(-45deg, #1B43F6, #93368F, #93368F, #FE2824);
+        background-size: 400% 400%;
+		background-position: 0% 50%;
+        -webkit-text-fill-color: transparent; 
+        -webkit-background-clip: text; 
+	}
+}

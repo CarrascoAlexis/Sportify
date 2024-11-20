@@ -7,12 +7,12 @@ import { useAuth } from '../../Components/App/AuthProvider';
 export default function EventsCreate()
 {
     const auth = useAuth()
+    const [files, setFiles] = useState([])
     const [input, setInput] = useState({
         title: "",
         description: "",
         startDate: "1946-02-05",
-        endDate: "1946-02-06",
-        players: 0
+        endDate: "1946-02-06"
     });
     const handleInput = (e) => {
         const { name, value } = e.target;
@@ -30,6 +30,8 @@ export default function EventsCreate()
             if(input[key] == "")
             {
                 if(document.getElementById(key) != undefined) document.getElementById(key).classList.add("error")
+                console.log(key)
+                error = true
             }
             else
             {
@@ -37,13 +39,42 @@ export default function EventsCreate()
             }
         })
 
+        if(files.length == 0)
+        {
+            error = true
+        } 
+        console.log(error)
         if(error) return;
+
+        const formData = new FormData();
+        for(let i = 0; i < files.length; i++)
+        {
+            formData.append(
+                "eventPic",
+                files[i],
+                files[i].name
+            )
+        }
         const data = input
         data["authorId"] = auth.user.id
         axiosInstance.post("/events/create", {"params": input})
         .then(res => {
+            if(res.data.error)
+            {
+                // Future gestion d'erreur
+                return;
+            }
+            formData.append("eventId", res.data.insertId)
+            axiosInstance.post("/image/eventupload/", formData)
+            .then(res => {
+                console.log(res)
+            })
             
         })
+    }
+    const fileChange = (e) => {
+        console.log(e.target.files)
+        setFiles(e.target.files)
     }
 
     return(
@@ -63,6 +94,10 @@ export default function EventsCreate()
             <label id="endDate">
                 Description détaillée:
                 <input type="datetime-local" name="endDate" value={input.endDate} onChange={handleInput}/>
+            </label>
+            <label id="images">
+                Images
+                <input type='file' name="eventPic" onChange={fileChange} multiple/>
             </label>
             <input type="submit" value="Submit"/>
         </form>

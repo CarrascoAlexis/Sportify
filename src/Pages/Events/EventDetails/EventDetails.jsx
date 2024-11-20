@@ -10,6 +10,7 @@ export default function EventDetails()
     const [event, setEvent] = useState({
         authorId: -1
     })
+    const [images, setImages] = useState([{}])
     let { title } = useParams();
 
     if(!auth.user) auth.updateConnection()
@@ -17,8 +18,15 @@ export default function EventDetails()
     useState(() => {    
         axiosInstance.get("/events", {"params": {"filter": {"title": title}}})
             .then(res => {
-                if(!res.error) setEvent(res.data[0])
-                console.log("Successfully loaded event data")
+                if(!res.error) 
+                {
+                    setEvent(res.data[0])
+                    console.log("Successfully loaded event data")
+                    axiosInstance.get("/image/event", {"params": {"filter": {"eventId": res.data[0].id}}})
+                    .then(res => {
+                        setImages(res.data)
+                    })
+                }
             })
             .catch(error => {
                 console.log(error);
@@ -33,11 +41,22 @@ export default function EventDetails()
             <p>Event innaccessible</p>
         )
     }
+
     return(
         <div>
             <h2>{event.title}</h2>
             <p>{event.shortDescription}</p>
             <p>{event.description}</p>
+            <div>
+            <p>fesse</p>
+            {
+                images
+                .map(img => 
+                    <img src={`http://localhost:5000/eventsPic/${img.fileName}`} alt="" />
+                )
+            }
+            
+            </div>
             {editButton}
         </div>
     )

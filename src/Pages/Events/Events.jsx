@@ -14,6 +14,7 @@ export default function Events(props)
         axiosInstance.get("/events", {"params": {"filter": {"isVisible": 1}}})
         .then(res => {
             setEvents(res.data)
+            console.log(res.data)
         })
     }, [])
 

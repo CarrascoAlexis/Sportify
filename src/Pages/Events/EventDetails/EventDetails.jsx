@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import axiosInstance from '../../../axiosConfig';
 import './EventDetails.css'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Slide } from 'react-slideshow-image';
 import { useAuth } from '../../../Components/App/AuthProvider';
 import 'react-slideshow-image/dist/styles.css';
 import { BsMouse } from "react-icons/bs";
+import { infinite } from 'swr/infinite';
 
 export default function EventDetails()
 {
@@ -15,17 +16,23 @@ export default function EventDetails()
     })
     const [images, setImages] = useState([{}])
     let { title } = useParams();
+    const navigate = useNavigate()
 
     if(!auth.user) auth.updateConnection()
 
-
-    const initSlider = () => {
-        const slides = document.getElementsByClassName('slider')
-        for(let i = 0; i < slides.length; i++)
+    const handleParticipation = (e) => {
+        e.preventDefault()
+        console.log(auth.user)
+        if(!auth.user)
         {
-            console.log(slides[i])
-            slides[i].classList.remove('active')
+            // Va te connecter
+            navigate("/compte/connexion")
+            return
         }
+        axiosInstance.post("/events/participation", {"params": {"eventId": event.id, "userId": auth.user.id}})
+        .then(res => {
+            console.log(res)
+        })
     }
 
 
@@ -48,17 +55,24 @@ export default function EventDetails()
     }, [])
 
     let editButton = null
+    let participationButton = <button onClick={handleParticipation}>Participer</button>
     if(event != null && auth != undefined && auth.user && event.authorId == auth.user.id) editButton = <p>Editer</p>
-    if(event == null || event == undefined ||editButton == null)
+    if(!event.isVisible && (event == null || event == undefined || editButton == null))
     {
         return(
             <p>Event innaccessible</p>
         )
     }
 
+    if(auth.user !== null)
+    {
+        axiosInstance.get("/events/users", {"params": {"filter": {"eventId": event.id, "userId": auth.user.id}}})
+    }
+
     const properties = {
         prevArrow: <></>,
-        nextArrow: <></>
+        nextArrow: <></>,
+        infinite: true
     }
 
     return(
@@ -78,8 +92,15 @@ export default function EventDetails()
                     }
                 </Slide>
             </div>
-            <p>{event.shortDescription}</p>
-            <p>{event.description}</p>
+            <div className='event-data-block container row'>
+                <div className='col-6'>
+                    <p>{event.description}</p>
+                </div>
+                <div className='col-6'>
+                    <p>Du {new Date(event.startDate).toLocaleDateString('FR-fr')} a {new Date(event.startDate).toLocaleTimeString('FR-fr', {hour: '2-digit', minute:'2-digit'})} au {new Date(event.endDate).toLocaleDateString('FR-fr')} a {new Date(event.endDate).toLocaleTimeString('FR-fr', {hour: '2-digit', minute:'2-digit'})}</p>
+                    {participationButton}
+                </div>
+            </div>
             {editButton}
         </div>
     )

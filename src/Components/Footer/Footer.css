@@ -6,7 +6,6 @@ footer{
     width: 100%;
     height: 15vh;
     color:var(--main-text-white);
-    position: absolute;
 }
 
 footer *

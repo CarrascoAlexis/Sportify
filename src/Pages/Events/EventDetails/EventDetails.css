@@ -29,12 +29,7 @@
 
 .event-title-block{
     float: auto;
-}
-
-.imageContainer, .event-title-block{
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    background-color: var(--main-color) aqua;
 }
 
 .event-title-block > h2{

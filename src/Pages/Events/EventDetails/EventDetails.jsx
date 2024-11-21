@@ -62,21 +62,20 @@ export default function EventDetails()
 
     return(
         <div className='event-show'>
+            <div className='event-title-block'>
+                <h2>{event.title}</h2>
+            </div>
             <div className='imageContainer'>
                 <Slide {...properties}>
                     {
                         images.map(img => 
-                        <div className="each-slide-effect">
+                        <div className="each-slide-effect" key={img.id}>
                             <div style={{ 'backgroundImage': `url(http://localhost:5000/eventsPic/${img.fileName})`}}>
                             </div>
                         </div>
                         )
                     }
                 </Slide>
-            </div>
-            <div className='event-title-block'>
-                <h2>{event.title}</h2>
-                <span>Petit bouton de scroll</span>
             </div>
             <p>{event.shortDescription}</p>
             <p>{event.description}</p>

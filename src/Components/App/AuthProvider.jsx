@@ -1,6 +1,5 @@
-import { useContext, createContext, useState, useEffect } from "react";
+import { useContext, createContext, useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
-import axios from 'axios';
 import axiosInstance from "../../axiosConfig";
 
 const AuthContext = createContext();
@@ -15,9 +14,9 @@ export default function AuthProvider({children}){
     const loginAction = async (data, redirection = "/compte") => {
         console.log(data)
         console.log(data)
-        if(data.nickname == "admin" && data.password == "admin")
+        if(data.nickname === "admin" && data.password === "admin")
         {
-            if(redirection == "/compte") redirection = "/admin"
+            if(redirection === "/compte") redirection = "/admin"
             setUser({
                 nickname: "admin",
                 isEmploye: 1,
@@ -36,14 +35,14 @@ export default function AuthProvider({children}){
 
         axiosInstance.get(`/user/connect`, {"params": {"nickname" : data.nickname, "password": data.password, "ephemeral": data.ephemeral}})
         .then(res => {
-            if(res.data.error == undefined && res.data.token != undefined)
+            if(res.data.error === undefined && res.data.token !== undefined)
             {
-                if(res.data.user.isEmploye == 1) setSessionType(1)
+                if(res.data.user.isEmploye === 1) setSessionType(1)
                 setUser(res.data.user);
                 setToken(res.data.token);
                 localStorage.setItem("token", res.data.token);
                 localStorage.setItem("ephemeral", data.ephemeral)
-                if(data.ephemeral == false) setEphemeralSession(false)
+                if(data.ephemeral === false) setEphemeralSession(false)
                 else setEphemeralSession(true)
                 navigate(redirection);
                 return
@@ -70,9 +69,9 @@ export default function AuthProvider({children}){
     };
 
     const firstLog = () => {
-        if(localStorage.getItem("ephemeral") == "true") logOut()
+        if(localStorage.getItem("ephemeral") === "true") logOut()
         console.log("boucle")
-        if(localStorage.getItem("token") == undefined || localStorage.getItem("token") == null || localStorage.getItem("ephemeral") == true)
+        if(localStorage.getItem("token") === undefined || localStorage.getItem("token") === null || localStorage.getItem("ephemeral") === true)
         {
             setUser(null);
             setToken("");
@@ -81,7 +80,7 @@ export default function AuthProvider({children}){
         }
         axiosInstance.get(`/user/getSession`, {"params": {"token": localStorage.getItem("token")}})
         .then(res => {
-            if(res.data.nickname == undefined)
+            if(res.data.nickname === undefined)
             {
                 navigate("/compte/connexion")
                 return
@@ -96,9 +95,9 @@ export default function AuthProvider({children}){
         {
             return true
         }
-        if(localStorage.getItem("token") != null && localStorage.getItem("token") != "")
+        if(localStorage.getItem("token") !== null && localStorage.getItem("token") !== "")
         {
-            if(localStorage.getItem("ephemeral") == "true") logOut()
+            if(localStorage.getItem("ephemeral") === "true") logOut()
             else firstLog()
             return true
             // ON crée une nouvelle session ici

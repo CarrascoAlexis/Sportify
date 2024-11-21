@@ -26,7 +26,6 @@ import EventsCreate from '../../Pages/Events/EventsCreate';
 import CreateAccount from '../../Pages/User/CreateAccount';
 
 import '../../Stylesheets/Main.css'
-import '../../Stylesheets/Footer.css'
 import '../../Stylesheets/simple-grid.min.css'
 
 export default function App()

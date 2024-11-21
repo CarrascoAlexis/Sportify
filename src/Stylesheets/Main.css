@@ -1,16 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap');
 
-*{
+html{
     --main-color: #242628;
     --main-text-white: #aaaaaa;
+    --full-black: #242628;
 
     margin: 0 0 0 0;
     box-sizing: border-box;
-    
 }
 
 main{
-    margin-top: 5vh;
+    margin-top: 8vh;
 }
 
 .table-full-w

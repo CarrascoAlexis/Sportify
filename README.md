@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# Sportify
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ce projet a ete cree dans le cadre de l'ECF Studi Web-Web mobile.
+Petites excuses concernant les accents, ayant un clavier QWERTY a tendances humouristiaues, celui-ci refuse categoriquement de produire un quelconque accent (Je pense qu'il n'qime pas les Francais)
 
-## Available Scripts
+## Prerequis
 
-In the project directory, you can run:
+Le projet contient 2 parties. Le front, ici present, et l'API, a installer en premier lici, en cliquqnt [ici](https://github.com/CarrascoAlexis/SportifyAPI). Suivez d'abord les inscructions d'installation de l'API avant de proceder a l'installation de ce repo.
+
+## Installation
+
+Dans un premier temps, clonez le repo ou vous le souhaitez sur votre machine. Il est recommande de plqcer le dossier de ce projet q cote de celui de l'API. Entrez ensuite dans le dossier.
+
+### `git clone git@github.com:CarrascoAlexis/Sportify.git`
+### `cd Sportify`
+
+Une fois dans le dossier, assurez vous d'etre sur la branche principale. La branche de DEV contiens la version finale, aui n'a pas pu etre produite dans les delais impartis.
+
+### `git checkout master`
+
+Une fois dans lq bonne brqnche et le projet telechqrge, il faut installer toutes les librairies. Cette installation se fait automatiauement si le fichier package.json est bien present. Si celui-ci est absent ou bien supprime, telechargez le depuis le Git pour le placer a la racine du projet (dans le dossier Sportify)
+
+### `npm install`
+
+Une fois les dependances installees, vous pouvez lancer le site. Il est necessaire de lancer egalement l'API (Se referer au [README de l'API](https://github.com/CarrascoAlexis/SportifyAPI))
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Et voila, le projet devrait se lancer sans soucis sur votre machine !
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Attention, ce n'est qu'un serveur local de tests. Si vous souhaitez obtenir une version build pour l'installer sur un serveur Apache ou equivalent, Il faut executer la commande de build:
 
-### `npm test`
+### `npm build`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Vous pouvew ensuite pqlcer le dossier Build dqns les dossier de votre serveur web.

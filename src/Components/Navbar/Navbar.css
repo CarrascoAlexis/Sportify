@@ -3,7 +3,10 @@ nav{
     color: #aaaaaa;
     display: flex;
     padding: 10px;
-    height: 8vh;
+    position: fixed;
+    z-index: 500;
+    width: 100vw;
+    top: 0;
 }
 
 nav a {
@@ -12,7 +15,7 @@ nav a {
     padding: 5px;
     margin: auto auto;
     font-size: x-large;
-    box-shadow: inset 0 0 0 0 #54b3d6;
+    box-shadow: inset 0 0 0 0 #93368F;
     transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
     border-radius: 5px;
 }

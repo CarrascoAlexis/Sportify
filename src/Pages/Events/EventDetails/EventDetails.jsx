@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { Slide } from 'react-slideshow-image';
 import { useAuth } from '../../../Components/App/AuthProvider';
 import 'react-slideshow-image/dist/styles.css';
+import { BsMouse } from "react-icons/bs";
 
 export default function EventDetails()
 {

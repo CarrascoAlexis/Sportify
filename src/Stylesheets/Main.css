@@ -1,9 +1,16 @@
-:root{
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap');
+
+*{
     --main-color: #242628;
+    --main-text-white: #aaaaaa;
+
+    margin: 0 0 0 0;
+    box-sizing: border-box;
+    
 }
 
 main{
-    min-height: 75vh;
+    margin-top: 5vh;
 }
 
 .table-full-w
@@ -17,4 +24,11 @@ main{
 
 .white-text > * {
     color:#aaaaaa;
+}
+
+h1, h2, h3{
+    font-family: "Jura", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
 }

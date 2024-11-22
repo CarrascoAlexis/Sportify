@@ -1,0 +1,46 @@
+"filename", "language", "JSON", "JavaScript JSX", "CSS", "Markdown", "JavaScript", "HTML", "comment", "blank", "total"
+"f:\sportify\README.md", "Markdown", 0, 0, 0, 38, 0, 0, 0, 33, 71
+"f:\sportify\package-lock.json", "JSON", 17784, 0, 0, 0, 0, 0, 0, 1, 17785
+"f:\sportify\package.json", "JSON", 44, 0, 0, 0, 0, 0, 0, 1, 45
+"f:\sportify\public\index.html", "HTML", 0, 0, 0, 0, 0, 19, 24, 1, 44
+"f:\sportify\src\Components\App\App.jsx", "JavaScript JSX", 0, 114, 0, 0, 0, 0, 0, 8, 122
+"f:\sportify\src\Components\App\AuthProvider.jsx", "JavaScript JSX", 0, 104, 0, 0, 0, 0, 1, 9, 114
+"f:\sportify\src\Components\Cards\Cards.css", "CSS", 0, 0, 16, 0, 0, 0, 0, 3, 19
+"f:\sportify\src\Components\Cards\EventCard.jsx", "JavaScript JSX", 0, 70, 0, 0, 0, 0, 0, 9, 79
+"f:\sportify\src\Components\Cards\UserCard.jsx", "JavaScript JSX", 0, 71, 0, 0, 0, 0, 0, 7, 78
+"f:\sportify\src\Components\Footer\Footer.css", "CSS", 0, 0, 13, 0, 0, 0, 0, 1, 14
+"f:\sportify\src\Components\Footer\Footer.jsx", "JavaScript JSX", 0, 28, 0, 0, 0, 0, 0, 1, 29
+"f:\sportify\src\Components\Navbar\Navbar.css", "CSS", 0, 0, 59, 0, 0, 0, 0, 5, 64
+"f:\sportify\src\Components\Navbar\Navbar.jsx", "JavaScript JSX", 0, 29, 0, 0, 0, 0, 0, 4, 33
+"f:\sportify\src\Components\ProtectedPage\ProtectedPage.jsx", "JavaScript JSX", 0, 22, 0, 0, 0, 0, 0, 1, 23
+"f:\sportify\src\Components\Root\Root.css", "CSS", 0, 0, 5, 0, 0, 0, 0, 0, 5
+"f:\sportify\src\Components\Root\Root.jsx", "JavaScript JSX", 0, 25, 0, 0, 0, 0, 1, 6, 32
+"f:\sportify\src\Pages\Admin\Admin.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 1, 1
+"f:\sportify\src\Pages\Admin\Admin.jsx", "JavaScript JSX", 0, 23, 0, 0, 0, 0, 0, 1, 24
+"f:\sportify\src\Pages\Admin\EventsPanel.jsx", "JavaScript JSX", 0, 9, 0, 0, 0, 0, 0, 2, 11
+"f:\sportify\src\Pages\Admin\UserCreation.jsx", "JavaScript JSX", 0, 74, 0, 0, 0, 0, 0, 8, 82
+"f:\sportify\src\Pages\Admin\UsersPanel.jsx", "JavaScript JSX", 0, 36, 0, 0, 0, 0, 0, 3, 39
+"f:\sportify\src\Pages\Contact\Contact.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 1, 1
+"f:\sportify\src\Pages\Contact\Contact.jsx", "JavaScript JSX", 0, 7, 0, 0, 0, 0, 0, 1, 8
+"f:\sportify\src\Pages\Error\Error.jsx", "JavaScript JSX", 0, 14, 0, 0, 0, 0, 0, 2, 16
+"f:\sportify\src\Pages\Events\EventDetails\EventDetails.css", "CSS", 0, 0, 47, 0, 0, 0, 6, 8, 61
+"f:\sportify\src\Pages\Events\EventDetails\EventDetails.jsx", "JavaScript JSX", 0, 157, 0, 0, 0, 0, 2, 14, 173
+"f:\sportify\src\Pages\Events\EventEdit.jsx", "JavaScript JSX", 0, 111, 0, 0, 0, 0, 1, 12, 124
+"f:\sportify\src\Pages\Events\Events.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 1, 1
+"f:\sportify\src\Pages\Events\Events.jsx", "JavaScript JSX", 0, 34, 0, 0, 0, 0, 0, 5, 39
+"f:\sportify\src\Pages\Events\EventsCreate.css", "CSS", 0, 0, 3, 0, 0, 0, 0, 0, 3
+"f:\sportify\src\Pages\Events\EventsCreate.jsx", "JavaScript JSX", 0, 96, 0, 0, 0, 0, 1, 8, 105
+"f:\sportify\src\Pages\Events\EventsManagement.jsx", "JavaScript JSX", 0, 33, 0, 0, 0, 0, 0, 6, 39
+"f:\sportify\src\Pages\Index\Index.jsx", "JavaScript JSX", 0, 40, 0, 0, 0, 0, 5, 5, 50
+"f:\sportify\src\Pages\User\Connexion.css", "CSS", 0, 0, 3, 0, 0, 0, 0, 0, 3
+"f:\sportify\src\Pages\User\Connexion.jsx", "JavaScript JSX", 0, 55, 0, 0, 0, 0, 15, 7, 77
+"f:\sportify\src\Pages\User\CreateAccount.jsx", "JavaScript JSX", 0, 65, 0, 0, 0, 0, 1, 6, 72
+"f:\sportify\src\Pages\User\EditUser.jsx", "JavaScript JSX", 0, 69, 0, 0, 0, 0, 1, 9, 79
+"f:\sportify\src\Pages\User\User.css", "CSS", 0, 0, 52, 0, 0, 0, 0, 10, 62
+"f:\sportify\src\Pages\User\User.jsx", "JavaScript JSX", 0, 46, 0, 0, 0, 0, 0, 7, 53
+"f:\sportify\src\Stylesheets\Cards.css", "CSS", 0, 0, 5, 0, 0, 0, 1, 1, 7
+"f:\sportify\src\Stylesheets\Main.css", "CSS", 0, 0, 27, 0, 0, 0, 0, 7, 34
+"f:\sportify\src\Stylesheets\simple-grid.min.css", "CSS", 0, 0, 1, 0, 0, 0, 0, 1, 2
+"f:\sportify\src\axiosConfig.jsx", "JavaScript JSX", 0, 5, 0, 0, 0, 0, 1, 2, 8
+"f:\sportify\src\index.js", "JavaScript", 0, 0, 0, 0, 7, 0, 0, 2, 9
+"Total", "-", 17828, 1337, 231, 38, 7, 19, 60, 220, 19740

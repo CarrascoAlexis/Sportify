@@ -1,13 +1,22 @@
 import { useNavigate } from 'react-router-dom'
 import axiosInstance from '../../axiosConfig'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Cards.css'
 
 
 export default function EventCard(props)
 {
     const [event, setEvent] = useState(props.event)
+    const [participations, setParticipations] = useState(0)
     let editButton = null
+
+    useEffect(() => {
+        axiosInstance.get("/events/users", {"params": {"filter": {"eventId": event.id ? event.id : props.event.id}}})
+        .then(res => {
+            if(res.data.error) return console.log(res.data.error)
+            return setParticipations(res.data.length)
+        })
+    })
 
     const validateEvent = (e) => 
     {
@@ -43,12 +52,13 @@ export default function EventCard(props)
 
     if(props.editable || props.show == "author")
     {
-        editButton = <button onClick={(e) => navigate(`/events/edit/${event.title ? event.title : props.event.title}`)}>Editer</button>
+        editButton = <button className='edit-button' onClick={(e) => navigate(`/events/edit/${event.title ? event.title : props.event.title}`)}>Editer</button>
     }
 
     return(
-        <div className='event-card' onClick={() => HandleClick()}>
-            <h3>{event.title ? event.title : props.event.title}</h3>
+        <div className='event-card col-6 row' onClick={() => HandleClick()}>
+            <h4 className='col-4'>{event.title ? event.title : props.event.title}</h4>
+            <p>{participations} particiant(s)</p>
             {
                 props.editable ? (
                     <div>

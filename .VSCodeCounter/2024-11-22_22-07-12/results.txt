@@ -1,0 +1,94 @@
+Date : 2024-11-22 22:07:12
+Directory : f:\sportify
+Total : 44 files,  19460 codes, 60 comments, 220 blanks, all 19740 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| JSON           |          2 |     17,828 |          0 |          2 |     17,830 |
+| JavaScript JSX |         25 |      1,337 |         29 |        143 |      1,509 |
+| CSS            |         14 |        231 |          7 |         39 |        277 |
+| Markdown       |          1 |         38 |          0 |         33 |         71 |
+| HTML           |          1 |         19 |         24 |          1 |         44 |
+| JavaScript     |          1 |          7 |          0 |          2 |          9 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                       | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                          |         44 |     19,460 |         60 |        220 |     19,740 |
+| . (Files)                                                  |          3 |     17,866 |          0 |         35 |     17,901 |
+| public                                                     |          1 |         19 |         24 |          1 |         44 |
+| src                                                        |         40 |      1,575 |         36 |        184 |      1,795 |
+| src (Files)                                                |          2 |         12 |          1 |          4 |         17 |
+| src\Components                                             |         12 |        556 |          2 |         54 |        612 |
+| src\Components\App                                         |          2 |        218 |          1 |         17 |        236 |
+| src\Components\Cards                                       |          3 |        157 |          0 |         19 |        176 |
+| src\Components\Footer                                      |          2 |         41 |          0 |          2 |         43 |
+| src\Components\Navbar                                      |          2 |         88 |          0 |          9 |         97 |
+| src\Components\ProtectedPage                               |          1 |         22 |          0 |          1 |         23 |
+| src\Components\Root                                        |          2 |         30 |          1 |          6 |         37 |
+| src\Pages                                                  |         23 |        974 |         32 |        117 |      1,123 |
+| src\Pages\Admin                                            |          5 |        142 |          0 |         15 |        157 |
+| src\Pages\Contact                                          |          2 |          7 |          0 |          2 |          9 |
+| src\Pages\Error                                            |          1 |         14 |          0 |          2 |         16 |
+| src\Pages\Events                                           |          8 |        481 |         10 |         54 |        545 |
+| src\Pages\Events (Files)                                   |          6 |        277 |          2 |         32 |        311 |
+| src\Pages\Events\EventDetails                              |          2 |        204 |          8 |         22 |        234 |
+| src\Pages\Index                                            |          1 |         40 |          5 |          5 |         50 |
+| src\Pages\User                                             |          6 |        290 |         17 |         39 |        346 |
+| src\Stylesheets                                            |          3 |         33 |          1 |          9 |         43 |
++------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                   | language       | code       | comment    | blank      | total      |
++------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| f:\sportify\README.md                                      | Markdown       |         38 |          0 |         33 |         71 |
+| f:\sportify\package-lock.json                              | JSON           |     17,784 |          0 |          1 |     17,785 |
+| f:\sportify\package.json                                   | JSON           |         44 |          0 |          1 |         45 |
+| f:\sportify\public\index.html                              | HTML           |         19 |         24 |          1 |         44 |
+| f:\sportify\src\Components\App\App.jsx                     | JavaScript JSX |        114 |          0 |          8 |        122 |
+| f:\sportify\src\Components\App\AuthProvider.jsx            | JavaScript JSX |        104 |          1 |          9 |        114 |
+| f:\sportify\src\Components\Cards\Cards.css                 | CSS            |         16 |          0 |          3 |         19 |
+| f:\sportify\src\Components\Cards\EventCard.jsx             | JavaScript JSX |         70 |          0 |          9 |         79 |
+| f:\sportify\src\Components\Cards\UserCard.jsx              | JavaScript JSX |         71 |          0 |          7 |         78 |
+| f:\sportify\src\Components\Footer\Footer.css               | CSS            |         13 |          0 |          1 |         14 |
+| f:\sportify\src\Components\Footer\Footer.jsx               | JavaScript JSX |         28 |          0 |          1 |         29 |
+| f:\sportify\src\Components\Navbar\Navbar.css               | CSS            |         59 |          0 |          5 |         64 |
+| f:\sportify\src\Components\Navbar\Navbar.jsx               | JavaScript JSX |         29 |          0 |          4 |         33 |
+| f:\sportify\src\Components\ProtectedPage\ProtectedPage.jsx | JavaScript JSX |         22 |          0 |          1 |         23 |
+| f:\sportify\src\Components\Root\Root.css                   | CSS            |          5 |          0 |          0 |          5 |
+| f:\sportify\src\Components\Root\Root.jsx                   | JavaScript JSX |         25 |          1 |          6 |         32 |
+| f:\sportify\src\Pages\Admin\Admin.css                      | CSS            |          0 |          0 |          1 |          1 |
+| f:\sportify\src\Pages\Admin\Admin.jsx                      | JavaScript JSX |         23 |          0 |          1 |         24 |
+| f:\sportify\src\Pages\Admin\EventsPanel.jsx                | JavaScript JSX |          9 |          0 |          2 |         11 |
+| f:\sportify\src\Pages\Admin\UserCreation.jsx               | JavaScript JSX |         74 |          0 |          8 |         82 |
+| f:\sportify\src\Pages\Admin\UsersPanel.jsx                 | JavaScript JSX |         36 |          0 |          3 |         39 |
+| f:\sportify\src\Pages\Contact\Contact.css                  | CSS            |          0 |          0 |          1 |          1 |
+| f:\sportify\src\Pages\Contact\Contact.jsx                  | JavaScript JSX |          7 |          0 |          1 |          8 |
+| f:\sportify\src\Pages\Error\Error.jsx                      | JavaScript JSX |         14 |          0 |          2 |         16 |
+| f:\sportify\src\Pages\Events\EventDetails\EventDetails.css | CSS            |         47 |          6 |          8 |         61 |
+| f:\sportify\src\Pages\Events\EventDetails\EventDetails.jsx | JavaScript JSX |        157 |          2 |         14 |        173 |
+| f:\sportify\src\Pages\Events\EventEdit.jsx                 | JavaScript JSX |        111 |          1 |         12 |        124 |
+| f:\sportify\src\Pages\Events\Events.css                    | CSS            |          0 |          0 |          1 |          1 |
+| f:\sportify\src\Pages\Events\Events.jsx                    | JavaScript JSX |         34 |          0 |          5 |         39 |
+| f:\sportify\src\Pages\Events\EventsCreate.css              | CSS            |          3 |          0 |          0 |          3 |
+| f:\sportify\src\Pages\Events\EventsCreate.jsx              | JavaScript JSX |         96 |          1 |          8 |        105 |
+| f:\sportify\src\Pages\Events\EventsManagement.jsx          | JavaScript JSX |         33 |          0 |          6 |         39 |
+| f:\sportify\src\Pages\Index\Index.jsx                      | JavaScript JSX |         40 |          5 |          5 |         50 |
+| f:\sportify\src\Pages\User\Connexion.css                   | CSS            |          3 |          0 |          0 |          3 |
+| f:\sportify\src\Pages\User\Connexion.jsx                   | JavaScript JSX |         55 |         15 |          7 |         77 |
+| f:\sportify\src\Pages\User\CreateAccount.jsx               | JavaScript JSX |         65 |          1 |          6 |         72 |
+| f:\sportify\src\Pages\User\EditUser.jsx                    | JavaScript JSX |         69 |          1 |          9 |         79 |
+| f:\sportify\src\Pages\User\User.css                        | CSS            |         52 |          0 |         10 |         62 |
+| f:\sportify\src\Pages\User\User.jsx                        | JavaScript JSX |         46 |          0 |          7 |         53 |
+| f:\sportify\src\Stylesheets\Cards.css                      | CSS            |          5 |          1 |          1 |          7 |
+| f:\sportify\src\Stylesheets\Main.css                       | CSS            |         27 |          0 |          7 |         34 |
+| f:\sportify\src\Stylesheets\simple-grid.min.css            | CSS            |          1 |          0 |          1 |          2 |
+| f:\sportify\src\axiosConfig.jsx                            | JavaScript JSX |          5 |          1 |          2 |          8 |
+| f:\sportify\src\index.js                                   | JavaScript     |          7 |          0 |          2 |          9 |
+| Total                                                      |                |     19,460 |         60 |        220 |     19,740 |
++------------------------------------------------------------+----------------+------------+------------+------------+------------+

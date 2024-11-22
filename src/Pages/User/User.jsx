@@ -17,20 +17,37 @@ export default function User()
         })
     }, [])
 
+    const employePanel = (
+    <div className='employe-panel'>
+        <Link to={"/manageEvents"} className='animated-button'>Gerer les  evenements</Link>
+    </div>)
+
     const auth = useAuth();
     let profile = `${axiosInstance.defaults.baseURL}/profiles/${auth.user.profile}`
-    return (
-        <>
-            <p>{auth.user.nickname}</p>
-            <img src={profile} alt="" />
-            <button onClick={auth.logOut}></button>
-            <div className='container user-events'>
-                <h2>Mes evenements</h2>
+
+    
+    return(
+        <div className='container user-show'>
+            <button className='animated-button' onClick={auth.logOut}>Deconnexion</button>
+            <div className='user-top'>
+                <img src={profile} alt="" />
+                <h2>Bienvenue, {auth.user.nickname} !</h2>
+                <p>{auth.user.isEmploye ? (<>Compte employe</>) : (<></>)}</p>
+            </div>
+            {auth.user.isEmploye ? employePanel : (<></>)}
+            <div className='user-events'>
+                <h3 className='col-12'>Mes evenements</h3>
+                {events.length === 0 ? (
+                    <div className='col-12'>
+                        <p>Aucn evenement cree</p>
+                        <Link to={"/events/create"}>Créer un event</Link>
+                    </div>
+                ) : (<></>)}
+                <div className='user-events-container'>
                 {events.map(event => <EventCard event={event} show="author"/>)}
+                </div>
+                
             </div>
-            <div>
-                {auth.user.isEmploye ? (<Link to={"/manageEvents"}>Gerer les  evenements</Link>) : (<></>)}
-            </div>
-        </>
-    );
+        </div>
+    )
 }

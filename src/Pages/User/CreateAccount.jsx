@@ -18,8 +18,6 @@ export default function CreateAccount()
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log("test")
-
         const formData = new FormData();
         axiosInstance.post("/user/create", input)
         .then(res => {

@@ -1,0 +1,62 @@
+.user-show > button {
+    top: 7rem;
+    right: 1rem;
+    position: absolute;
+    background-color: var(--main-color);
+    color: var(--main-text-white);
+    border-radius: 50px;
+    margin: 0 auto;
+    font-size: large;
+    padding: .5rem 1rem;
+}
+
+.animated-button{
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    box-shadow: inset 0 0 0 0 #93368F;
+    border-width: 0;
+}
+
+.animated-button:hover{
+    box-shadow: inset 300px 0 0 0 #aaaaaa;
+    color: #242628;
+}
+
+.user-top{
+    margin-top: 3vh;
+    text-align: center;
+}
+
+.user-top > img{
+    width: 20vw;
+    border-radius: 50%;
+    clip-path: circle();
+}
+
+.user-top > h2 {
+    font-size: xx-large;
+}
+
+.user-top > * {
+    margin: 0 auto;
+}
+
+.employe-panel > a{
+    background-color: var(--main-color);
+    color: var(--main-text-white);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    margin: 0 auto;
+}
+
+.employe-panel {
+    text-align: center;
+    padding: 2vh;
+}
+
+.user-events{
+    text-align: center;
+}
+
+.user-events-container{
+    display: flex;
+}

@@ -1,3 +1,19 @@
 .event-card{
     display:flex;
+    margin: 0 auto;
+    background-color: var(--main-color);
+    color: var(--main-text-white);
+}
+
+.event-card *{
+    color: var(--main-text-white);
+}
+
+.event-card h4{
+    font-size: xx-large;
+}
+
+.edit-button{
+    right: 0;
+    position: absolute;
 }

@@ -25,7 +25,6 @@ export default function EventDetails()
 
     const handleParticipation = (e) => {
         e.preventDefault()
-        console.log(auth)
         if(!auth)
         {
             // Va te connecter
@@ -34,25 +33,23 @@ export default function EventDetails()
         }
         axiosInstance.post("/events/participation", {"params": {"eventId": event.id, "userId": auth.user.id}})
         .then(res => {
-            console.log(res)
             setParticipation(true)
+            return
         })
     }
 
     const handleUninscription = (e) => {
         e.preventDefault();
-        console.log("PROUT ZIZI FESSE")
         if(!auth)
         {
             // Va te connecter
             navigate("/compte/connexion")
             return
         }
-        console.log(auth.user.id)
         axiosInstance.post("/events/uninscription", {"params":  {"eventId": event.id, "userId": auth.user.id}})
         .then(res => {
-            console.log(res)
             setParticipation(false)
+            return
         })
     }
 

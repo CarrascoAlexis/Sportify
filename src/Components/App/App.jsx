@@ -74,6 +74,10 @@ export default function App()
                 element: <Contact/>
             },
             {
+                path: "/manageEvents",
+                element: <ProtectedPage employe="true"><p>test</p></ProtectedPage>
+            },
+            {
                 path: "/admin",
                 element: <Outlet/>,
                 children:[

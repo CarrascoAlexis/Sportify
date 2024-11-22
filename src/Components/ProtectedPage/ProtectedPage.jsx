@@ -1,12 +1,19 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../App/AuthProvider";
 import Connexion from "../../Pages/User/Connexion";
 
-export default function ProtectedPage({children}){
+export default function ProtectedPage(props){
     const auth = useAuth()
+    const navigate = useNavigate()
     if(auth.user != null && auth.user != undefined)
     {
-        return children
+        console.log(props)
+        if(props.employe === "true")
+        {
+            if(auth.user.isEmploye) return props.children
+            else return navigate("/events")
+        }
+        return props.children
     }
     if(localStorage.getItem("token") != null && localStorage.getItem("token") != "")
     {

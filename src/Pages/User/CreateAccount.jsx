@@ -22,6 +22,7 @@ export default function CreateAccount()
         const formData = new FormData();
         axiosInstance.post("/user/create", input)
         .then(res => {
+            console.log(res)
             if(res.data.error) return
             if(file != null || file != undefined)
             { 
@@ -33,7 +34,7 @@ export default function CreateAccount()
             }
             formData.append("userId", res.data.insertId)
             axiosInstance.post("/image/profileupload/", formData);
-            navigate("/admin/users")
+            navigate("/compte/connexion")
         })
     }
     
@@ -48,16 +49,6 @@ export default function CreateAccount()
             [name]: value,
         }));
     };
-
-    const handleInputCheck = (e) => {
-        let employe
-        if(input.isEmploye == 1) employe = 0
-        else employe = 1 
-        setInput((prev) => ({
-            ...prev,
-            isEmploye: !input.isEmploye,
-        }));
-    }
 
     return(
         <form onSubmit={handleSubmit} id='connection-form'>

@@ -35,7 +35,6 @@ export default function AuthProvider({children}){
 
         axiosInstance.get(`/user/connect`, {"params": {"nickname" : data.nickname, "password": data.password, "ephemeral": data.ephemeral}})
         .then(res => {
-            console.log(res.data.error)
             if(res.data.error === undefined && res.data.token !== undefined)
             {
                 if(res.data.user.isEmploye === 1) setSessionType(1)

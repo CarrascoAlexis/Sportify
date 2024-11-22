@@ -7,11 +7,7 @@ export default function UserCard(props)
     const [user, setUser] = useState(props.user);
     const [edition, setEdition] = useState(false)
 
-    let profile = `./resources/profile_pics/${user.profile}`
-    if(user.profile == "" || user.profile == null || user.profile == undefined)
-    {
-        profile = `./resources/profile_pics/default.png`
-    }
+    let profile = `${axiosInstance.defaults.baseURL}/profiles/${user.profile}`
     
     const handleInput = (e) => {
         const { name, value } = e.target;

@@ -29,6 +29,7 @@ import CreateAccount from '../../Pages/User/CreateAccount';
 
 import '../../Stylesheets/Main.css'
 import '../../Stylesheets/simple-grid.min.css'
+import EditUser from '../../Pages/User/EditUser';
 
 export default function App()
 {
@@ -70,6 +71,10 @@ export default function App()
             {
                 path: "/compte/connexion",
                 element: <Connexion/>
+            },
+            {
+                path: "/compte/edit",
+                element: <EditUser/>
             },
             {
                 path: "/compte/creation",

@@ -18,15 +18,10 @@ export default function User()
     }, [])
 
     const auth = useAuth();
-    let profile = `./resources/profile_pics/${auth.user.profile}`
-    if(auth.user.profile == "" || auth.user.profile == null || auth.user.profile == undefined)
-    {
-        profile = `./resources/profile_pics/default.png`
-    }
+    let profile = `${axiosInstance.defaults.baseURL}/profiles/${auth.user.profile}`
     return (
         <>
             <p>{auth.user.nickname}</p>
-            <p>{auth.user.profile}</p>
             <img src={profile} alt="" />
             <button onClick={auth.logOut}></button>
             <div className='container user-events'>

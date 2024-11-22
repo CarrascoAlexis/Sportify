@@ -1,14 +1,16 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import axiosInstance from "../../axiosConfig";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../Components/App/AuthProvider";
 
-export default function CreateAccount() 
+export default function EditUser() 
 {
+    const auth = useAuth();
+
     const [profile, setProfile] = useState(null)
     const [profilePreview, setProfilePreview] = useState(null)
     const [input, setInput] = useState({
         nickname: "",
-        password: "",
         profile: "",
         mail: "",
         isEmploye: "0"
@@ -21,7 +23,7 @@ export default function CreateAccount()
         console.log("test")
 
         const formData = new FormData();
-        axiosInstance.post("/user/create", input)
+        axiosInstance.post("/user/edit", input)
         .then(res => {
             console.log(res)
             if(res.data.error) return
@@ -53,15 +55,18 @@ export default function CreateAccount()
         }));
     };
 
-    return(
+    useEffect(() => {
+        if(auth.user){
+            console.log(auth.user)
+            setInput(auth.user)
+        }
+    }, [])
+
+    return( 
         <form onSubmit={handleSubmit} id='connection-form'>
             <label>
                 Pseudo:
                 <input type="text" name="nickname" value={input.nickname} onChange={handleInput} />
-            </label>
-            <label>
-                Mot de passe:
-                <input type="text" name="password" value={input.password} onChange={handleInput}/>
             </label>
             <label>
                 profil

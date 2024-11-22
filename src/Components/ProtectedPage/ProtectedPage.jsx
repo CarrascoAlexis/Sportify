@@ -7,7 +7,6 @@ export default function ProtectedPage(props){
     const navigate = useNavigate()
     if(auth.user != null && auth.user != undefined)
     {
-        console.log(props)
         if(props.employe === "true")
         {
             if(auth.user.isEmploye) return props.children

@@ -12,8 +12,6 @@ export default function Navbar()
     if(auth != undefined && auth.user == null)
     {
         auth.updateConnection()
-        console.log(auth)
-        console.log("bah oui bb")
         userPageElem = <Link to={'/compte/connexion'}>Connexion</Link>
     }
     else

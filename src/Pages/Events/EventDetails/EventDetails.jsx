@@ -53,6 +53,32 @@ export default function EventDetails()
         })
     }
 
+    const validateEvent = (e) => 
+    {
+        e.preventDefault();
+        setEvent((prev) => ({
+            ...prev,
+            isVisible: 1,
+        }));
+        axiosInstance.post("/events/validate", {eventId: event.id})
+        .then(res => {
+            if(res.data.error) return console.log(res.data.error)
+        })
+    }
+
+    const unvalidateEvent = (e) => 
+    {
+        e.preventDefault();
+        setEvent((prev) => ({
+            ...prev,
+            isVisible: 0,
+        }));
+        axiosInstance.post("/events/unvalidate", {eventId: event.id})
+        .then(res => {
+            if(res.data.error) return console.log(res.data.error)
+        })
+    }
+
 
     useState(() => {
         auth.updateConnection()
@@ -76,7 +102,6 @@ export default function EventDetails()
 
     if(auth.user)axiosInstance.get("/events/users", {"params": {"filter": {"eventId": event.id, "userId": auth.user.id}}})
         .then(res => {
-            console.log(res)
             if(res.data.length != 0) return setParticipation(true)
             else return setParticipation(false)
         })
@@ -130,6 +155,9 @@ export default function EventDetails()
                         <button onClick={handleParticipation}>Inscription</button>)}
                 </div>
             </div>
+            {
+                auth.user.isEmploye ? (event.isVisible ? (<button onClick={unvalidateEvent}>Annuler validation</button>) : (<button onClick={validateEvent}>Valider</button>)) : <></>
+            }
             {editButton}
         </div>
     )

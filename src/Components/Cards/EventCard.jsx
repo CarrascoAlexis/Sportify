@@ -1,14 +1,14 @@
 import { useNavigate } from 'react-router-dom'
 import axiosInstance from '../../axiosConfig'
 import { useState } from 'react'
-
+import './Cards.css'
 
 
 export default function EventCard(props)
 {
     const [event, setEvent] = useState(props.event)
     let editButton = null
-    if(props.editable)
+    if(props.editable || props.show == "author")
     {
         editButton = <p>Editer</p>
     }
@@ -41,21 +41,27 @@ export default function EventCard(props)
 
     const navigate = useNavigate()
     const HandleClick = () => {
-        if(!props.editable) return navigate(`/events/${event.title}`)
+        if(!props.editable) return navigate(`/events/${event.title ? event.title : props.event.title}`)
     }
+
     return(
         <div className='event-card' onClick={() => HandleClick()}>
-            <h3>{event.title}</h3>
+            <h3>{event.title ? event.title : props.event.title}</h3>
             {
                 props.editable ? (
                     <div>
                         {event.isVisible ? (<button onClick={unvalidateEvent}>Annuler validation</button>) : (<button onClick={validateEvent}>Valider</button>)}
-                        <button onClick={() => navigate(`/events/${event.title}`)}>Voir</button>
+                        <button onClick={() => navigate(`/events/${event.title ? event.title : props.event.title}`)}>Voir</button>
                     </div>
                 ) : (
                     <></>
                 )
             }
+            {
+                props.show == "author" ? (event.isVisible || props.event.isVisible ? (<p>Valide</p>) : (<p>Non valide</p>)) : (<></>)
+            }
+            {editButton}
+
         </div>
     )
 }

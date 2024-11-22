@@ -70,13 +70,11 @@ export default function AuthProvider({children}){
 
     const firstLog = () => {
         if(localStorage.getItem("ephemeral") === "true") logOut()
-        console.log("boucle")
         if(localStorage.getItem("token") === undefined || localStorage.getItem("token") === null || localStorage.getItem("token") === "" || localStorage.getItem("ephemeral") === true)
         {
             logOut()
             return
         }
-        console.log("Clear")
         axiosInstance.get(`/user/getSession`, {"params": {"token": localStorage.getItem("token")}})
         .then(res => {
             if(res.data.nickname === undefined)
@@ -87,6 +85,7 @@ export default function AuthProvider({children}){
             }
             setToken(localStorage.getItem("token"))
             setUser(res.data)
+            return console.log("CONNECTION REUSSIE")
         })
     }
 

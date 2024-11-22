@@ -12,18 +12,21 @@ export default function EventDetails()
 {
     const auth = useAuth()
     const [event, setEvent] = useState({
-        authorId: -1
+        authorId: -1,
+        id: 0
     })
     const [images, setImages] = useState([{}])
+    const [participation, setParticipation] = useState(false)
     let { title } = useParams();
     const navigate = useNavigate()
+
 
     if(!auth.user) auth.updateConnection()
 
     const handleParticipation = (e) => {
         e.preventDefault()
-        console.log(auth.user)
-        if(!auth.user)
+        console.log(auth)
+        if(!auth)
         {
             // Va te connecter
             navigate("/compte/connexion")
@@ -32,15 +35,35 @@ export default function EventDetails()
         axiosInstance.post("/events/participation", {"params": {"eventId": event.id, "userId": auth.user.id}})
         .then(res => {
             console.log(res)
+            setParticipation(true)
+        })
+    }
+
+    const handleUninscription = (e) => {
+        e.preventDefault();
+        console.log("PROUT ZIZI FESSE")
+        if(!auth)
+        {
+            // Va te connecter
+            navigate("/compte/connexion")
+            return
+        }
+        console.log(auth.user.id)
+        axiosInstance.post("/events/uninscription", {"params":  {"eventId": event.id, "userId": auth.user.id}})
+        .then(res => {
+            console.log(res)
+            setParticipation(false)
         })
     }
 
 
-    useState(() => {    
+    useState(() => {
+        auth.updateConnection()
         axiosInstance.get("/events", {"params": {"filter": {"title": title}}})
             .then(res => {
                 if(!res.error) 
                 {
+                    const id = res.data[0].id
                     setEvent(res.data[0])
                     console.log("Successfully loaded event data")
                     axiosInstance.get("/image/event", {"params": {"filter": {"eventId": res.data[0].id}}})
@@ -52,10 +75,16 @@ export default function EventDetails()
             .catch(error => {
                 console.log(error);
             });
-    }, [])
+    })
+
+    if(auth.user)axiosInstance.get("/events/users", {"params": {"filter": {"eventId": event.id, "userId": auth.user.id}}})
+        .then(res => {
+            console.log(res)
+            if(res.data.length != 0) return setParticipation(true)
+            else return setParticipation(false)
+        })
 
     let editButton = null
-    let participationButton = <button onClick={handleParticipation}>Participer</button>
     if(event != null && auth != undefined && auth.user && event.authorId == auth.user.id) editButton = <p>Editer</p>
     if(!event.isVisible && (event == null || event == undefined || editButton == null))
     {
@@ -85,7 +114,7 @@ export default function EventDetails()
                     {
                         images.map(img => 
                         <div className="each-slide-effect" key={img.id}>
-                            <div style={{ 'backgroundImage': `url(http://localhost:5000/eventsPic/${img.fileName})`}}>
+                            <div style={{ 'backgroundImage': `url(${axiosInstance.defaults.baseURL}/eventsPic/${img.fileName})`}}>
                             </div>
                         </div>
                         )
@@ -98,7 +127,10 @@ export default function EventDetails()
                 </div>
                 <div className='col-6'>
                     <p>Du {new Date(event.startDate).toLocaleDateString('FR-fr')} a {new Date(event.startDate).toLocaleTimeString('FR-fr', {hour: '2-digit', minute:'2-digit'})} au {new Date(event.endDate).toLocaleDateString('FR-fr')} a {new Date(event.endDate).toLocaleTimeString('FR-fr', {hour: '2-digit', minute:'2-digit'})}</p>
-                    {participationButton}
+                    {participation ? (
+                        <button onClick={handleUninscription}>Se desinscrire</button>
+                    ) : (
+                        <button onClick={handleParticipation}>Inscription</button>)}
                 </div>
             </div>
             {editButton}

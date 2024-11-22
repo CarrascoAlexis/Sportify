@@ -9,7 +9,6 @@ export default function Navbar()
     
     let userPageElem = <Link to={'/compte/connexion'}>Connexion</Link>
 
-    if(auth != undefined) auth.updateConnection()
     if(auth != undefined && auth.user == null)
     {
         auth.updateConnection()

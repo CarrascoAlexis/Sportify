@@ -35,6 +35,7 @@ export default function AuthProvider({children}){
 
         axiosInstance.get(`/user/connect`, {"params": {"nickname" : data.nickname, "password": data.password, "ephemeral": data.ephemeral}})
         .then(res => {
+            console.log(res.data.error)
             if(res.data.error === undefined && res.data.token !== undefined)
             {
                 if(res.data.user.isEmploye === 1) setSessionType(1)
@@ -71,17 +72,17 @@ export default function AuthProvider({children}){
     const firstLog = () => {
         if(localStorage.getItem("ephemeral") === "true") logOut()
         console.log("boucle")
-        if(localStorage.getItem("token") === undefined || localStorage.getItem("token") === null || localStorage.getItem("ephemeral") === true)
+        if(localStorage.getItem("token") === undefined || localStorage.getItem("token") === null || localStorage.getItem("token") === "" || localStorage.getItem("ephemeral") === true)
         {
-            setUser(null);
-            setToken("");
-            localStorage.removeItem("token");
+            logOut()
             return
         }
+        console.log("Clear")
         axiosInstance.get(`/user/getSession`, {"params": {"token": localStorage.getItem("token")}})
         .then(res => {
             if(res.data.nickname === undefined)
             {
+                logOut()
                 navigate("/compte/connexion")
                 return
             }

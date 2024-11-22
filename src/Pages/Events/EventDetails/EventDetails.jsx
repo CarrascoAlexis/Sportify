@@ -25,7 +25,7 @@ export default function EventDetails()
 
     const handleParticipation = (e) => {
         e.preventDefault()
-        if(!auth)
+        if(!auth.user)
         {
             // Va te connecter
             navigate("/compte/connexion")
@@ -107,7 +107,12 @@ export default function EventDetails()
         })
 
     let editButton = null
-    if(event != null && auth != undefined && auth.user && event.authorId == auth.user.id) editButton = <p>Editer</p>
+    let waitValidateArea = null
+    if(event != null && auth != undefined && auth.user && event.authorId == auth.user.id) 
+    {
+        editButton = <button onClick={(e) => navigate(`/events/edit/${event.title}`)}>Editer</button>
+        if(!event.isVisible) waitValidateArea = <div className='validation-advert'>EN ATTENTE DE VALIDATION</div>
+    }
     if(!event.isVisible && (event == null || event == undefined || editButton == null))
     {
         return(
@@ -128,6 +133,9 @@ export default function EventDetails()
 
     return(
         <div className='event-show'>
+            {
+            waitValidateArea
+            }
             <div className='event-title-block'>
                 <h2>{event.title}</h2>
             </div>
@@ -149,16 +157,17 @@ export default function EventDetails()
                 </div>
                 <div className='col-6'>
                     <p>Du {new Date(event.startDate).toLocaleDateString('FR-fr')} a {new Date(event.startDate).toLocaleTimeString('FR-fr', {hour: '2-digit', minute:'2-digit'})} au {new Date(event.endDate).toLocaleDateString('FR-fr')} a {new Date(event.endDate).toLocaleTimeString('FR-fr', {hour: '2-digit', minute:'2-digit'})}</p>
-                    {participation ? (
-                        <button onClick={handleUninscription}>Se desinscrire</button>
-                    ) : (
-                        <button onClick={handleParticipation}>Inscription</button>)}
+                    {
+                        auth.user && event.authorId === auth.user.id ? (editButton) : (participation ? (
+                            <button onClick={handleUninscription}>Se desinscrire</button>
+                        ) : (
+                            <button onClick={handleParticipation}>Inscription</button>))
+                        }
                 </div>
             </div>
             {
-                auth.user.isEmploye ? (event.isVisible ? (<button onClick={unvalidateEvent}>Annuler validation</button>) : (<button onClick={validateEvent}>Valider</button>)) : <></>
+                auth.user && auth.user.isEmploye ? (event.isVisible ? (<button onClick={unvalidateEvent}>Annuler validation</button>) : (<button onClick={validateEvent}>Valider</button>)) : <></>
             }
-            {editButton}
         </div>
     )
 }

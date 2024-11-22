@@ -8,10 +8,6 @@ export default function EventCard(props)
 {
     const [event, setEvent] = useState(props.event)
     let editButton = null
-    if(props.editable || props.show == "author")
-    {
-        editButton = <p>Editer</p>
-    }
 
     const validateEvent = (e) => 
     {
@@ -41,7 +37,13 @@ export default function EventCard(props)
 
     const navigate = useNavigate()
     const HandleClick = () => {
-        if(!props.editable) return navigate(`/events/${event.title ? event.title : props.event.title}`)
+        if(props.editable || props.show == "author") return
+        return navigate(`/events/${event.title ? event.title : props.event.title}`)
+    }
+
+    if(props.editable || props.show == "author")
+    {
+        editButton = <button onClick={(e) => navigate(`/events/edit/${event.title ? event.title : props.event.title}`)}>Editer</button>
     }
 
     return(

@@ -51,3 +51,11 @@
     bottom: 0;
     position: absolute;
 }
+
+.validation-advert{
+    background-color: red;
+    text-align: center;
+    padding: 3vh 20vw;
+    font-size: x-large;
+    font-weight: bolder;
+}

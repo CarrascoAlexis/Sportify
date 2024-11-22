@@ -23,6 +23,7 @@ import Connexion from '../../Pages/User/Connexion';
 import Contact from '../../Pages/Contact/Contact';
 import EventDetails from '../../Pages/Events/EventDetails/EventDetails';
 import EventsCreate from '../../Pages/Events/EventsCreate';
+import EventEdit from '../../Pages/Events/EventEdit';
 import EventManagement from '../../Pages/Events/EventsManagement';
 import CreateAccount from '../../Pages/User/CreateAccount';
 
@@ -57,6 +58,10 @@ export default function App()
             {
                 path: "/events/create",
                 element: <ProtectedPage><EventsCreate/></ProtectedPage>
+            },
+            {
+                path: "/events/edit/:title",
+                element: <ProtectedPage><EventEdit/></ProtectedPage>
             },
             {
                 path: "/compte",

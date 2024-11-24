@@ -1,50 +1,55 @@
 import { useEffect, useState } from "react"
+import { Slide } from "react-slideshow-image"
+import axiosInstance from "../../axiosConfig"
+import EventCard from '../../Components/Cards/EventCard'
 
 export default function Index()
 {
-    let slideIndex = 0
-
-    const changeSlide = (n) => {
-        showSlide(slideIndex += n)
+    const [images, setImages] = useState([{}])
+    const [events, setEvents] = useState([{}])
+    const properties = {
+        prevArrow: <></>,
+        nextArrow: <></>,
+        infinite: true
     }
 
-    const showSlide = (n) => {
-        let i;
-        let slides = document.getElementsByClassName("slidePart");
-        console.log(slides)
-        let dots = document.getElementsByClassName("dot");
-        if (n > slides.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = slides.length}
-        for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-        }
-        // for (i = 0; i < dots.length; i++) {
-        //   dots[i].className = dots[i].className.replace(" active", "");
-        // }
-        // slides[slideIndex-1].style.display = "block";
-        // dots[slideIndex-1].className += " active";
-    }
+    useState(() => {
+        axiosInstance.get("/events", {"params": {"filter": {"isVisible": 1}}})
+        .then(res => {
+            setEvents(res.data)
+            console.log(res.data)
+        })
+        axiosInstance.get("/image/indexSlide")
+        .then(res => {
+            setImages(res.data)
+        })
+    })
 
-    useEffect(() => {
-        showSlide(1)
-    }, [])
 
     return(
-        <>
-            <div className="slideshow">
-                <div className="slidePart">
-                    <img src="/images/event-pgw.jpg" alt="Paris Games Week"/>
-                    <div className="text">Caption Text</div>
-                </div>
-                <div className="slidePart">
-                    <img src="/images/event-zevent.jpg" alt="ZEvent" />
-                    <div className="text">Caption Text</div>
-                </div>
-                <div className="slidePart">
-                    <img src="/images/event-zlan.jpg" alt="ZLan" />
-                    <div className="text">Caption Text</div>
-                </div>
+        <div>
+            <Slide {...properties} >
+                {
+                    images.map(img => 
+                    <div className="each-slide-effect" key={img.id}>
+                        <div style={{ 'backgroundImage': `url(${axiosInstance.defaults.baseURL}/eventsPic/${img.fileName})`}}>
+                        </div>
+                    </div>
+                    )
+                }
+            </Slide>
+            <div className="index-presentation container">
+                <p>Esportify est une startup spécialisée dans le domaine du e-sports qui a vu le jour le 17 mars
+                2021. Elle est située en France et propose d’organiser ces évènements.</p>
             </div>
-        </>
+            <div className="container row">
+                {
+                    events
+                    .map(event =>
+                        <EventCard key={event.id} event={event}/>
+                    )
+                }
+            </div>
+        </div>
     )
 }
